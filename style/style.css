@@ -1,0 +1,194 @@
+body{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+p{
+    font-size: clamp(0.9rem, 1.2rem, 1.8rem);
+}
+.navigation-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    padding: 20px 0;
+}
+.hotel-logo{
+    width: clamp(5em, 5.5em, 7em);
+    margin: 0 0 0 8em;
+}
+.navigation-links{
+    display: flex;
+    margin: 0 8em 0 auto;
+    gap: 50px;
+    padding: 0;
+}
+.links{
+    font-size: clamp(1.1rem, 1.7rem, 2.5rem);
+    font-weight: bolder;
+    position: relative;
+}
+.nav-link::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  height: 3px;
+  background-color: red;
+
+  transform: translateX(-50%) scaleX(0.5);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::after{
+    transform: translateX(-50%) scaleX(1);
+    width: 100%;
+    color: red;
+}
+.nav-link:hover{
+    transition: transform 0.3s ease;
+    color: red;
+}
+
+.first-section{
+    width: 100vw;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.first-section-images-wrapper{
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+}
+/* li must fill the section */
+.first-section-images-wrapper> li {
+  position: absolute;
+  inset: 0;
+}
+/* images */
+.room-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease, opacity 1s ease;
+}
+/* active image */
+.room-image.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* exiting image */
+.room-image.exit {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.first-section-content{
+    position: relative;
+    z-index: 2;
+    color: white;
+    width: 500px;
+    left: 50px;
+    top: 100px;
+}
+.first-section-content>h1{
+    font-size: clamp(1rem, 2.5rem, 3.5rem);
+    color:rgb(255, 255, 255);
+    text-shadow:  0 0 5px rgb(0, 0, 0),
+    0 0 10px rgb(0, 0, 0),
+    0 0 20px rgb(0, 0, 0);
+}
+.first-section-content>p{
+    font-size: clamp(0.9rem, 1.8rem, 2.5rem);
+    text-shadow:  0 0 5px rgb(0, 0, 0),
+    0 0 10px rgb(0, 0, 0),
+    0 0 20px rgb(0, 0, 0);
+}
+.book-button{
+    font-size: clamp(0.9rem, 1.8rem, 2.5rem);
+    padding: 5px 20px;
+    border: none;
+    background-color: rgb(153, 221, 230);
+    color: rgb(31, 52, 55);
+    border-radius: 0.25em;
+    box-shadow: 5px 5px 5px;
+}
+.book-button:hover{
+    background-color: white;
+    transition: 0.3s ease-in;
+}
+.second-section{
+    width: 100vw;
+    background-color: aliceblue;
+}
+.section-titles{
+    text-align: center;
+    padding: 50px 0 0 0;
+    margin: 0;
+    font-size: clamp(1.2rem, 2rem, 3rem);
+}
+.second-section> p{
+    text-align: center;
+    margin: 0;
+    padding: 0 0 30px 0;
+}
+.index-room-wrapper{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+.index-room-panels{
+    width: clamp(250px, 350px, 450px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+.index-room-images{
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+.index-room-images>img{
+    width: 100%;
+    height: 100%;
+}
+.index-room-images>img:hover{
+    transform: scale(1.2);
+    transform-origin: center;
+    transition: transform 0.5s ease;
+}
+.index-room-panels> h3{
+    font-size: clamp(1rem, 1.5rem, 1.8rem);
+    margin: 0;
+    padding: 30px 0 10px 0;
+    text-align: center;
+}
+.index-room-panels> p{
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+    text-align: center;
+    color: rgb(64, 68, 71);
+}
