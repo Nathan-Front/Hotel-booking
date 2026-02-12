@@ -6,6 +6,21 @@ async function fetchNavbar(){
 }
 fetchNavbar();
 
+async function fetchBottomSections() {
+  const body = document.body;
+
+  // Load footer first
+  const footerRes = await fetch("footer.html");
+  const footerHTML = await footerRes.text();
+  body.insertAdjacentHTML("beforeend", footerHTML);
+
+  // Then load alright
+  const alrightRes = await fetch("alright.html");
+  const alrightHTML = await alrightRes.text();
+  body.insertAdjacentHTML("beforeend", alrightHTML);
+}
+fetchBottomSections();
+
 let firstSectionImages = document.querySelectorAll(".room-image");
 let currentImageIndex = 0;
 
