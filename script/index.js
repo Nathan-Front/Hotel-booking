@@ -44,3 +44,88 @@ function firstSectionImagesAnimation() {
 }
 
 setInterval(firstSectionImagesAnimation, 8000);
+
+const galleryWrapper = document.querySelector(".gallery-wrapper");
+const galleryImages = document.querySelectorAll(".gallery-image");
+let visibleGalleryImages;
+function initialGalleryImage(){
+  if(window.innerWidth <= 540){
+    visibleGalleryImages = 2;
+  } else if(window.innerWidth <= 768){
+    visibleGalleryImages = 3;
+  } else{
+    visibleGalleryImages = 4;
+  }
+}
+initialGalleryImage();
+let currentIndex = 0; 
+function updateGallery(){
+  if(!galleryWrapper) return;
+  const container = document.querySelector(".gallery-main-wrapper");
+  const maxTranslate = galleryWrapper.scrollWidth - container.clientWidth;
+
+  const {fullWidth} = getGalleryWrapperWidth();
+  let translate = currentIndex * fullWidth;
+
+  if (translate > maxTranslate) {
+    translate = maxTranslate;
+  }
+  galleryWrapper.style.transform = `translateX(-${translate}px)`;
+}
+
+window.addEventListener("resize", () => {
+  updateGallery();
+  initialGalleryImage();
+  const maxIndex = galleryImages.length - visibleGalleryImages;
+  if(currentIndex > maxIndex){
+    currentIndex = maxIndex;
+  }
+
+  updateGallery();
+});
+
+function prevNextButtons(){
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  if(!prevBtn || !nextBtn) return;
+  const galleryMaxIndex = galleryImages.length - visibleGalleryImages;
+
+  nextBtn.addEventListener("click", () => {
+    if(currentIndex >= galleryMaxIndex){
+      currentIndex = 0;
+    } else {
+      currentIndex++;
+    }
+    updateGallery();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if(currentIndex <= 0){
+      currentIndex = galleryMaxIndex;
+    } else {
+      currentIndex--;
+    }
+    updateGallery();
+  });
+}
+prevNextButtons();
+
+function getGalleryWrapperWidth(){
+  const gallerMainWrapper = document.querySelector(".gallery-main-wrapper");
+  const viewportWidth = Array.from(galleryImages);
+  if(!galleryWrapper || !galleryImages || !viewportWidth) return null;
+  const gallerySlide = galleryImages[0];
+  const slideRect = gallerySlide.getBoundingClientRect();
+  const style = getComputedStyle(gallerySlide);
+  const marginRight = parseFloat(style.marginRight);
+  const marginLeft = parseFloat(style.marginLeft);
+  const perSlideWidth = slideRect.width;
+  const wrapperWidth = gallerMainWrapper.getBoundingClientRect().width;
+  const containerWidth = getComputedStyle(galleryWrapper);
+  let gap = parseFloat(containerWidth.gap) || 0;
+  if(containerWidth.gap.includes("%")){
+    gap = wrapperWidth * (parseFloat(containerWidth.gap) / 100);
+  }
+  const fullWidth = perSlideWidth + marginRight + marginLeft + gap;
+  return {fullWidth, perSlideWidth};
+}
