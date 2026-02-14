@@ -18,6 +18,12 @@ async function fetchBottomSections() {
   const alrightRes = await fetch("alright.html");
   const alrightHTML = await alrightRes.text();
   body.insertAdjacentHTML("beforeend", alrightHTML);
+
+  if(window.innerWidth > 540) return;
+    const res = await fetch("mobileNavigation.html");
+    const mobileNavHTML = await res.text();
+    const container = document.querySelector("body");
+    container.insertAdjacentHTML("beforeend", mobileNavHTML);
 }
 fetchBottomSections();
 
