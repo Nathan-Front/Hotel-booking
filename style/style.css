@@ -304,7 +304,7 @@ p{
     transition: transform 0.4s ease-in-out;
 }
 .gallery-wrapper>li>img{
-    width: clamp(200px, 20vw, 400px);
+    width: clamp(230px, 20vw, 400px);
     height: clamp(150px, 20vw, 400px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);   
 }

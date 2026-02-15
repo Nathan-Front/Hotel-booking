@@ -79,8 +79,9 @@ function updateGallery(){
   galleryWrapper.style.transform = `translateX(-${translate}px)`;
   updateGalleryDots();
 }
-
-
+window.addEventListener("load", () => {
+  updateGallery();
+});
 window.addEventListener("resize", () => {
   updateGallery();
   initialGalleryImage();
@@ -135,18 +136,15 @@ function getGalleryWrapperWidth(){
     gap = wrapperWidth * (parseFloat(containerWidth.gap) / 100);
   }
   const fullWidth = perSlideWidth + marginRight + marginLeft + gap;
-  return {fullWidth, perSlideWidth};
-}
-
-function mobileTouchCarousel(){
-
+  return {fullWidth, perSlideWidth, wrapperWidth};
 }
 
 const galleryDot = document.querySelector(".slider-dots");
 function galleryDots(){
-  if(!galleryDots) return;
+  if(!galleryDot) return;
   galleryDots.innerHTML = "";
-  for(let i = 0; i < galleryImages.length; i++){
+  const totalDots = galleryImages.length - visibleGalleryImages + 1;
+  for(let i = 0; i < galleryImages.length ; i++){
     const dot = document.createElement("button");
     dot.addEventListener("click", () =>{
       if(window.innerWidth > 540) return;
@@ -170,3 +168,58 @@ window.addEventListener("load", ()=>{
   if(!galleryDot) return;
   updateGalleryDots();
 });
+
+function galleryMobileTouch(){
+  const galleryContainer = document.querySelector(".gallery-wrapper");
+  const gallerySlide = document.querySelectorAll(".gallery-image");
+  let index = 0;
+  let startX = 0;
+  let isDragging = false;
+  let currentTranslate = 0;
+  const {fullWidth, perSlideWidth, wrapperWidth} = getGalleryWrapperWidth();
+  if(!galleryContainer || !gallerySlide || !fullWidth || !perSlideWidth || !wrapperWidth) return;
+
+  function updateGallerySlides(){
+    //const centerOffSet = (wrapperWidth - perSlideWidth) / 2;
+   // const translateX = -index * fullWidth + centerOffSet;
+    //currentTranslate = translateX;
+    if(!galleryWrapper) return;
+
+    const container = document.querySelector(".gallery-main-wrapper");
+    const {fullWidth, perSlideWidth, wrapperWidth} = getGalleryWrapperWidth();
+    if(!fullWidth || !perSlideWidth || !wrapperWidth) return;
+    const centerOffset = (wrapperWidth - perSlideWidth) / 2;
+    let translate = currentIndex * fullWidth - centerOffset;
+    const maxTranslate = galleryWrapper.scrollWidth - container.clientWidth;
+
+    if (translate < 0) translate = 0;
+    if (translate > maxTranslate) translate = maxTranslate;
+
+    galleryContainer.style.transform = `translateX(-${translate}px)`;
+  }
+  galleryContainer.addEventListener("touchstart", (e) =>{
+    startX = e.touches[0].clientX;
+    isDragging = true;},
+    {passive: true}
+  );
+  galleryContainer.addEventListener("touchmove", (e) =>{
+    if(!isDragging)return;},
+    {passive: true}
+  );
+  galleryContainer.addEventListener("touchend", (e) =>{
+    if(!isDragging)return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+    if(diff > 50){
+      currentIndex = currentIndex === 0 ? gallerySlide.length -1: currentIndex - 1;
+    }else if (diff < -50){
+      currentIndex = (currentIndex + 1) % gallerySlide.length;
+    }
+    updateGallery();
+    updateGallerySlides();
+    isDragging = false;
+    updateGalleryDots();
+  });
+}
+window.addEventListener("resize", galleryMobileTouch);
+document.addEventListener("DOMContentLoaded", galleryMobileTouch);
