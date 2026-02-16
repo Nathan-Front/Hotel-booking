@@ -1,6 +1,5 @@
 
 body{
-
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -45,7 +44,7 @@ p{
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -20px;
+  bottom: -25px;
   height: 3px;
   background-color: red;
   transform: translateX(-50%) scaleX(0.5);
@@ -479,6 +478,9 @@ footer{
     margin: 0;
 }
 @media only screen and (max-width: 540px){
+    .footer-panels:nth-child(2){
+        display: none;
+    }
     .alright-wrapper{
         margin-bottom: 50px;
         gap: 0.5em;

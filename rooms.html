@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/rooms.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Rooms</title>
+  </head>
+  <body>
+    <section class="rooms-first-section">
+      <form action="" id="rooms-form" class="rooms-form-wrapper">
+        <div class="check-in-out-wrapper">
+          <div class="input-group">
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" required />
+          </div>
+
+          <div class="input-group">
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" required />
+          </div>
+
+          <p id="nights"></p>
+        </div>
+        <div class="user-reserve-info-wrapper">
+          <div class="reserve-counter">
+            <img
+              src="./images/rooms/logo/user-alt-1-svgrepo-com.svg"
+              alt="user logo"
+            />
+          </div>
+          <div class="reserve-counter">
+            <span>1</span>
+            <p>Adult</p>
+          </div>
+          <div class="reserve-counter">
+            <span>0</span>
+            <p>Children</p>
+          </div>
+          <div class="reserve-counter">
+            <span>1</span>
+            <p>Rooms</p>
+          </div>
+          <div class="reserve-info-wrapper">
+            <div>
+              <label for="adult-input">Adults</label>
+              <div class="counter">
+                <button type="button" id="adult-decrease">-</button>
+                <input
+                  type="number"
+                  id="adult-input"
+                  name="adults"
+                  value="1"
+                  min="1"
+                  max="10"
+                  readonly
+                />
+                <button type="button" id="adult-increase">+</button>
+              </div>
+            </div>
+            <div>
+              <label for="children-input">Children</label>
+              <div class="counter">
+                <button type="button" id="children-decrease">-</button>
+                <input
+                  type="number"
+                  id="children-input"
+                  name="children"
+                  value="0"
+                  min="1"
+                  max="10"
+                  readonly
+                />
+                <button type="button" id="children-increase">+</button>
+              </div>
+            </div>
+            <div>
+              <label for="rooms-input">Rooms</label>
+              <div class="counter">
+                <button type="button" id="rooms-decrease">-</button>
+                <input
+                  type="number"
+                  id="rooms-input"
+                  name="rooms"
+                  value="1"
+                  min="1"
+                  max="10"
+                  readonly
+                />
+                <button type="button" id="rooms-increase">+</button>
+              </div>
+            </div>
+            <div class="children-note">
+              <p>Children are age 17 years old and below</p>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="check-available-button">
+          Check Availability
+        </button>
+      </form>
+    </section>
+    <section class="rooms-second-section">
+      <h2>Rooms</h2>
+      <ul class="rooms-room-wrapper">
+        <li class="rooms-room-panels">
+          <div class="rooms-room-images">
+            <img
+              src="./images/index/rooms/twinbed single.jpg"
+              alt="twinbed single"
+              loading="lazy"
+            />
+          </div>
+          <h3>Twin bed (Single) rooms</h3>
+          <p>$90 per night</p>
+        </li>
+        <li class="rooms-room-panels">
+          <div class="rooms-room-images">
+            <img
+              src="./images/index/rooms/twinbed double.jpg"
+              alt="twinbed single"
+              loading="lazy"
+            />
+          </div>
+          <h3>Twin bed (Double) rooms</h3>
+          <p>$100 per night</p>
+        </li>
+        <li class="rooms-room-panels">
+          <div class="rooms-room-images">
+            <img
+              src="./images/index/rooms/doublebed full.jpg"
+              alt="twinbed single"
+              loading="lazy"
+            />
+          </div>
+          <h3>Double bed (Full) rooms</h3>
+          <p>$110 per night</p>
+        </li>
+        <li class="rooms-room-panels">
+          <div class="rooms-room-images">
+            <img
+              src="./images/index/rooms/queenbed.jpeg"
+              alt="twinbed single"
+              loading="lazy"
+            />
+          </div>
+          <h3>Queen bed rooms</h3>
+          <p>$150 per night</p>
+        </li>
+        <li class="rooms-room-panels">
+          <div class="rooms-room-images">
+            <img
+              src="./images/index/rooms/kingbed.jpg"
+              alt="twinbed single"
+              loading="lazy"
+            />
+          </div>
+          <h3>King bed rooms</h3>
+          <p>$180 per night</p>
+        </li>
+        <li class="rooms-room-panels">
+          <div class="rooms-room-images">
+            <img
+              src="./images/rooms/secondSection/family-room.jpeg"
+              alt="twinbed single"
+              loading="lazy"
+            />
+          </div>
+          <h3>Family rooms</h3>
+          <p>$250 per night</p>
+        </li>
+      </ul>
+    </section>
+    <section class="rooms-third-section">
+      <h2>Our mostly booked rooms</h2>
+      <p>These are rooms that have a good scenery.</p>
+      <ul class="most-booked-wrapper">
+        <li class="most-booked-panels">
+          <div class="most-booked-images">
+            <img
+              src="./images/index/rooms/twinbed double.jpg"
+              alt="twinbed double bed"
+              loading="lazy"
+            />
+          </div>
+          <div class="recommend-rooms">
+            <h3>Twin bed (Double) rooms</h3>
+            <div class="star-rating">★★★★☆</div>
+          </div>
+          <div class="recommend-details">
+            <p>Additional $30 per night to its original price.</p>
+            <p>You can clearly see the ocean view.</p>
+          </div>
+        </li>
+        <li class="most-booked-panels">
+          <div class="most-booked-images">
+            <img
+              src="./images/index/rooms/queenbed.jpeg"
+              alt="queen bed"
+              loading="lazy"
+            />
+          </div>
+          <div class="recommend-rooms">
+            <h3>Queen bed rooms</h3>
+            <div class="star-rating">★★★★☆</div>
+          </div>
+          <div class="recommend-details">
+            <p>Additional $30 per night to its original price.</p>
+            <p>You can clearly see the ocean view and surrounding mountains.</p>
+          </div>
+        </li>
+        <li class="most-booked-panels">
+          <div class="most-booked-images">
+            <img
+              src="./images/index/rooms/kingbed.jpg"
+              alt="king bed"
+              loading="lazy"
+            />
+          </div>
+          <div class="recommend-rooms">
+            <h3>King bed rooms</h3>
+            <div class="star-rating">★★★★★</div>
+          </div>
+          <div class="recommend-details">
+            <p>Additional $50 per night to its original price.</p>
+            <p>
+              You can clearly see the ocean view, surrounding mountains and
+              sunset.
+            </p>
+          </div>
+        </li>
+        <li class="most-booked-panels">
+          <div class="most-booked-images">
+            <img
+              src="./images/rooms/secondSection/family-room.jpeg"
+              alt="family room"
+              loading="lazy"
+            />
+          </div>
+          <div class="recommend-rooms">
+            <h3>Family rooms</h3>
+            <div class="star-rating">★★★★★</div>
+          </div>
+          <div class="recommend-details">
+            <p>Additional $50 per night to its original price.</p>
+            <p>
+              You can clearly see the ocean view, surrounding mountains and
+              sunset.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="rooms-fourth-section">
+      <h2>Mostly Asked Questions</h2>
+    </section>
+    <script src="./script/rooms.js" defer></script>
+  </body>
+</html>
