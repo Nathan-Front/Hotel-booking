@@ -29,11 +29,23 @@ async function fetchBottomSections() {
 fetchBottomSections();
 
 function reservationInputDisplay(){
-    const displayInputReservation = document.querySelector(".user-reserve-info-wrapper");
-    const displayInput = document.querySelector(".reserve-info-wrapper");
-    displayInputReservation.addEventListener("click", ()=>{
-        displayInput.classList.toggle("reserve-info-wrapper-active");      
-    });
+  const formWrapper = document.querySelector(".rooms-form-wrapper");
+  const displayInputReservation = document.querySelector(".user-reserve-info-wrapper");
+  const displayInput = document.querySelector(".reserve-info-wrapper");
+
+  displayInputReservation.addEventListener("click", () => {
+    displayInput.classList.toggle("reserve-info-wrapper-active");
+  });
+
+  displayInput.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!formWrapper.contains(e.target)) {
+      displayInput.classList.remove("reserve-info-wrapper-active");
+    }
+  });
 }
 reservationInputDisplay();
 
