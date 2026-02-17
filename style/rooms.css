@@ -265,3 +265,55 @@ h2{
 .recommend-details> p{
     padding: 0 10px;
 }
+
+.rooms-fourth-section{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+}
+.rooms-fourth-section> div{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
+    align-items: flex-start; 
+    padding: 20px 0;
+}
+.faq-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 0.25em;
+}
+.faq-panels{
+    width: clamp(350px, 45vw, 800px);
+    border: 0.5px gray solid;
+    border-radius: 0.25em;
+}
+.faq-question {
+  width: 100%;
+  padding: 10px 5px;
+  font-size: clamp(1.1rem, 1.4vw, 1.7rem);
+  font-weight: bolder;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+.faq-question::after {
+  content: '\02795';
+  position: absolute;
+  right: 10px;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #f4f4f4;
+  transition: max-height 0.3s ease;
+  padding: 0 10px;
+}
+.faq-item.active .faq-answer {
+  display: block;
+}

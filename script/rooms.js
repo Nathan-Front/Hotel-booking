@@ -36,3 +36,31 @@ function reservationInputDisplay(){
     });
 }
 reservationInputDisplay();
+
+
+
+function accordionFAQ(){
+ const buttons = document.querySelectorAll(".faq-question");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const content = button.nextElementSibling;
+
+      // Close other sections inside same accordion
+      const allContent = button.closest(".faq-wrapper").querySelectorAll(".faq-answer");
+      allContent.forEach(item => {
+        if (item !== content) {
+          item.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+}
+accordionFAQ();

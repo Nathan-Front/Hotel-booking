@@ -23,7 +23,7 @@ p{
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 .hotel-logo{
     width: clamp(4em, 8vw, 7em);
