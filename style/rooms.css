@@ -119,6 +119,11 @@ p, button{
 .reserve-info-wrapper-active> div> label{
     margin-right: 5px;
 }
+@media only screen and (max-width: 540px){
+    .reserve-info-wrapper-active{
+        right: -20%;
+    }
+}
 .counter{
     display: flex;
     border: 1px solid gray;
@@ -135,6 +140,16 @@ p, button{
     border: none;
     background-color: transparent;
     font-size: clamp(0.9rem, 2vw, 1.8rem);
+}
+.add-food{
+    display: flex;
+}
+.add-food>label{
+    display: flex;
+    gap: 1em;
+}
+input[type="checkbox"]{
+     transform: scale(1.5); 
 }
 .children-note{
     padding: 20px 0;
