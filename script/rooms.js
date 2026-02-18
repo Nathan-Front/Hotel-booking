@@ -82,14 +82,19 @@ function getReservationCount(){
   const increaseBtn = document.querySelectorAll(".increase-button");
   const decreaseBTn = document.querySelectorAll(".decrease-button");
 
+  let counter;
   increaseBtn.forEach(btn =>{
     btn.addEventListener("click", ()=>{
       const counterUp = btn.closest(".reserve-count-wrapper").querySelector("input");
       if(counterUp.value >= 10) {
-        alert("You had reached the maximum number of person allowed to reserve. Please contact us if you want to reserve more than 10 person. We are so sorry for the inconvinience.")
+        alert("You had reached the maximum number allowed to be reserved. Please contact us if you want to reserve more than 10. We are so sorry for the inconvinience.")
         return;
       };  
       counterUp.value ++;
+      counter = counterUp.value;
+      const targetId = btn.dataset.target;
+      const displayCounter = document.getElementById(targetId);
+      displayCounter.textContent = counter;
     });
   });
   decreaseBTn.forEach(btn =>{
@@ -97,6 +102,10 @@ function getReservationCount(){
       const counterDown = btn.closest(".reserve-count-wrapper").querySelector("input");
       if(counterDown.value <= 0) return;
       counterDown.value --;
+      counter = counterDown.value;
+      const targetId = btn.dataset.target;
+      const displayCounter = document.getElementById(targetId);
+      displayCounter.textContent = counter;
     });
   });
 }

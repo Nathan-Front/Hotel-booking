@@ -32,22 +32,28 @@
             />
           </div>
           <div class="reserve-counter">
-            <span>1</span>
+            <span id="adult-counter">0</span>
             <p>Adult</p>
           </div>
           <div class="reserve-counter">
-            <span>0</span>
+            <span id="children-counter">0</span>
             <p>Children</p>
           </div>
           <div class="reserve-counter">
-            <span>1</span>
+            <span id="room-counter">0</span>
             <p>Rooms</p>
           </div>
           <div class="reserve-info-wrapper">
             <div class="reserve-count-wrapper">
               <label class="labels" for="adult-input">Adults</label>
               <div class="counter">
-                <button type="button" class="decrease-button">-</button>
+                <button
+                  type="button"
+                  class="decrease-button"
+                  data-target="adult-counter"
+                >
+                  -
+                </button>
                 <input
                   type="number"
                   id="adult-input"
@@ -57,13 +63,25 @@
                   max="10"
                   readonly
                 />
-                <button type="button" class="increase-button">+</button>
+                <button
+                  type="button"
+                  class="increase-button"
+                  data-target="adult-counter"
+                >
+                  +
+                </button>
               </div>
             </div>
             <div class="reserve-count-wrapper">
               <label class="labels" for="children-input">Children</label>
               <div class="counter">
-                <button type="button" class="decrease-button">-</button>
+                <button
+                  type="button"
+                  class="decrease-button"
+                  data-target="children-counter"
+                >
+                  -
+                </button>
                 <input
                   type="number"
                   id="children-input"
@@ -73,13 +91,25 @@
                   max="10"
                   readonly
                 />
-                <button type="button" class="increase-button">+</button>
+                <button
+                  type="button"
+                  class="increase-button"
+                  data-target="children-counter"
+                >
+                  +
+                </button>
               </div>
             </div>
             <div class="reserve-count-wrapper">
               <label class="labels" for="rooms-input">Rooms</label>
               <div class="counter">
-                <button type="button" class="decrease-button">-</button>
+                <button
+                  type="button"
+                  class="decrease-button"
+                  data-target="room-counter"
+                >
+                  -
+                </button>
                 <input
                   type="number"
                   id="rooms-input"
@@ -89,7 +119,13 @@
                   max="10"
                   readonly
                 />
-                <button type="button" class="increase-button">+</button>
+                <button
+                  type="button"
+                  class="increase-button"
+                  data-target="room-counter"
+                >
+                  +
+                </button>
               </div>
             </div>
             <div class="add-food">
