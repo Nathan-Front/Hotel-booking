@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/rooms.css" />
     <link rel="stylesheet" href="./style/style.css" />
+    <link rel="icon" href="./images/logo/favicon.ico" type="image/x-icon" />
     <title>Rooms</title>
   </head>
   <body>
@@ -43,62 +44,62 @@
             <p>Rooms</p>
           </div>
           <div class="reserve-info-wrapper">
-            <div>
-              <label for="adult-input">Adults</label>
+            <div class="reserve-count-wrapper">
+              <label class="labels" for="adult-input">Adults</label>
               <div class="counter">
-                <button type="button" id="adult-decrease">-</button>
+                <button type="button" class="decrease-button">-</button>
                 <input
                   type="number"
                   id="adult-input"
                   name="adults"
-                  value="1"
-                  min="1"
+                  value="0"
+                  min="0"
                   max="10"
                   readonly
                 />
-                <button type="button" id="adult-increase">+</button>
+                <button type="button" class="increase-button">+</button>
               </div>
             </div>
-            <div>
-              <label for="children-input">Children</label>
+            <div class="reserve-count-wrapper">
+              <label class="labels" for="children-input">Children</label>
               <div class="counter">
-                <button type="button" id="children-decrease">-</button>
+                <button type="button" class="decrease-button">-</button>
                 <input
                   type="number"
                   id="children-input"
                   name="children"
                   value="0"
-                  min="1"
+                  min="0"
                   max="10"
                   readonly
                 />
-                <button type="button" id="children-increase">+</button>
+                <button type="button" class="increase-button">+</button>
               </div>
             </div>
-            <div>
-              <label for="rooms-input">Rooms</label>
+            <div class="reserve-count-wrapper">
+              <label class="labels" for="rooms-input">Rooms</label>
               <div class="counter">
-                <button type="button" id="rooms-decrease">-</button>
+                <button type="button" class="decrease-button">-</button>
                 <input
                   type="number"
                   id="rooms-input"
                   name="rooms"
-                  value="1"
-                  min="1"
+                  value="0"
+                  min="0"
                   max="10"
                   readonly
                 />
-                <button type="button" id="rooms-increase">+</button>
+                <button type="button" class="increase-button">+</button>
               </div>
             </div>
             <div class="add-food">
               <label class="switch">
-                <h4>Add Breakfast</h4>
+                <p>Add Breakfast</p>
                 <input type="checkbox" />
                 <span class="slider"></span>
               </label>
               <label class="switch">
-                <h4>Add Dinner</h4>
+                <p>Add Dinner</p>
                 <input type="checkbox" />
                 <span class="slider"></span>
               </label>

@@ -76,3 +76,28 @@ function accordionFAQ(){
   });
 }
 accordionFAQ();
+
+function getReservationCount(){
+  const counterWrapper = document.querySelector(".reserve-info-wrapper");
+  const increaseBtn = document.querySelectorAll(".increase-button");
+  const decreaseBTn = document.querySelectorAll(".decrease-button");
+
+  increaseBtn.forEach(btn =>{
+    btn.addEventListener("click", ()=>{
+      const counterUp = btn.closest(".reserve-count-wrapper").querySelector("input");
+      if(counterUp.value >= 10) {
+        alert("You had reached the maximum number of person allowed to reserve. Please contact us if you want to reserve more than 10 person. We are so sorry for the inconvinience.")
+        return;
+      };  
+      counterUp.value ++;
+    });
+  });
+  decreaseBTn.forEach(btn =>{
+    btn.addEventListener("click", ()=>{
+      const counterDown = btn.closest(".reserve-count-wrapper").querySelector("input");
+      if(counterDown.value <= 0) return;
+      counterDown.value --;
+    });
+  });
+}
+getReservationCount();
