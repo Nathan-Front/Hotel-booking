@@ -305,33 +305,36 @@ h2{
     gap: 0.25em;
 }
 .faq-panels{
-    width: clamp(350px, 45vw, 800px);
+    width: clamp(400px, 45vw, 800px);
     border: 0.5px gray solid;
     border-radius: 0.25em;
 }
 .faq-question {
-  width: 100%;
-  padding: 10px 5px;
-  font-size: clamp(1.1rem, 1.4vw, 1.7rem);
-  font-weight: bolder;
-  background: transparent;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  position: relative;
+    width: 100%;
+    padding: 10px 5px;
+    font-size: clamp(1.1rem, 1.4vw, 1.7rem);
+    font-weight: bolder;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 .faq-question::after {
-  content: '\02795';
-  position: absolute;
-  right: 10px;
+    content: '\02795';
+    position: absolute;
+    right: 10px;
+    top: 7px;
 }
 .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  background: #f4f4f4;
-  transition: max-height 0.3s ease;
-  padding: 0 10px;
+    max-height: 0;
+    overflow: hidden;
+    background: #f4f4f4;
+    transition: max-height 0.3s ease;
+    padding: 0 10px;
 }
 .faq-item.active .faq-answer {
-  display: block;
+    display: block;
 }
