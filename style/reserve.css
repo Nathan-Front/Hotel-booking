@@ -21,63 +21,77 @@ p, button{
     padding: 0;
 }
 h3{
-    font-size: clamp(1.1rem, 1.5vw, 1.8rem);
+    font-size: clamp(1.1rem, 1.6vw, 1.8rem);
     margin: 0;
 }
 h4{
     font-size: clamp(1rem, 1.4vw, 1.6rem);
     margin: 0;
 }
-.reserve-first-section{
+.reserve-first-section,
+.reserve-second-section,
+.reserve-third-section,
+.reserve-fourth-section{
     width: 90%;
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     display: flex;
     flex-direction: column;
     border: 1px rgb(207, 207, 207) solid;
 }
+.reserve-first-section> h3,
+.reserve-second-section> h3,
+.reserve-third-section> h3,
+.reserve-fourth-section> h3{
+    margin: 10px 0 0 10px;
+    color: blue;
+}
+.reserve-first-section> p,
+.reserve-second-section> p,
+.reserve-third-section> p,
+.reserve-fourth-section> p{
+    margin: 0 0 0 10px;
+    color: rgb(59, 67, 110);
+}
 .section-sub-wrapper{
     display: flex;
     margin-top: 20px;
-        flex-wrap: wrap;
-    border: 1px red solid;
+    flex-wrap: wrap;
+    height: 450px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+.section-sub-wrapper.show-other-rooms{
+    display: flex;
+    height: auto;
+    overflow: unset;
 }
 .room-left-panel{
     margin-left: 10px;
 }
 .left-panel-images{
     width: clamp(150px, 15vw, 250px);
-    
     display: grid;
-    
     grid-template-columns: repeat(auto-fit,minmax(80px, 1fr));
-   
+    height: fit-content;
     gap: 3px;
 }
-.left-panel-images>img{
-   /* width: clamp(150px, 15vw, 250px);*/
-    width: 100%;
 
-    border-radius: 0.25em;
-}
 .left-panel-images>img:first-child{
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    display: block;
+    height: auto;
+    width: 100%;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
 }
 .left-panel-images>img:nth-child(2){
     width: clamp(80px, 7.5vw, 125px);
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
 }
 .left-panel-images>img:last-child{
     width: clamp(80px, 7.5vw, 125px);
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
 }
 .left-panel-descript{
     display: flex;
@@ -93,15 +107,47 @@ h4{
 .left-panel-descript> li> img{
     width: clamp(15px, 1.5vw, 30px);
 }
+.left-panel-descript> li> button{
+    background-color: rgb(68, 68, 221);
+    border: none;
+    border-radius: 0.25em;
+    color: white;
+}
+@media only screen and (max-width: 540px){
+    .reserve-first-section{
+        width: 95%;
+    }
+    .section-sub-wrapper{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 660px;
+    }
+    .section-sub-wrapper.show-other-rooms{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .room-left-panel{
+        display: flex;
+        justify-content: space-around;
+        margin-left: 0;
+        padding-bottom: 10px;
+    }
+    .left-panel-descript{
+        padding: 0;
+    }
+}
 .more-button{
     padding: 3px 10px;
 }
 .room-right-panel{
     display: grid;
-    
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     grid-auto-rows: min-content;
-    border: 1px rgb(196, 194, 194) solid;
+    border-top: 1px rgb(196, 194, 194) solid;
+    border-left: 1px rgb(196, 194, 194) solid;
+    border-right: 1px rgb(196, 194, 194) solid;
     flex: 1;
     margin: 0 20px;
     border-radius: 0.25em;
@@ -168,11 +214,16 @@ h4{
     border-right: 1px rgb(196, 194, 194) solid;
     flex: 0.5;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 .person{
-    width: 40px;
-
+    width: clamp(15px, 1.5vw, 30px);
+    height: clamp(15px, 1.5vw, 30px);
+}
+.person-wrapper>span{
+    font-size: clamp(1rem, 1.3vw, 2.5rem);
 }
 .price-main-wrapper{
     display: flex;
@@ -181,20 +232,61 @@ h4{
     align-items: flex-start;
     flex: 1;
     padding: 20px 0;
-    margin-left: 20px;
+    margin-left: 30px;
+}
+@media only screen and (max-width: 540px){
+    .person-wrapper{
+        flex: 0 0 auto;
+    }
+    .price-main-wrapper{
+        margin-left: 10px;
+    }
 }
 .price-wrapper{
     display: flex;
     flex-direction: column;
-    
 }
 .price-wrapper> li{
     display: flex;
+    align-items: center;
+}
+.special-price> p{
+    color: rgb(255, 78, 78);
+    background-color: rgb(255, 228, 228);
+    padding: 2px 3px;
+    border-radius: 0.25em;
+}
+.special-price> span{
+    margin-left: 5px;
+    padding: 2px 5px;
+    background-color: rgb(255, 78, 78);
+    color: white;
+    border-radius: 0.25em;
+}
+.price-main-wrapper> button{
+    background-color: rgb(68, 68, 221);
+    border: none;
+    border-radius: 0.25em;
+    color: white;
+}
+.room-price{
+    display: flex;
+    gap: 10px;
+}
+.room-price> p{
+    text-decoration: line-through;
+    opacity: 0.5; 
+    font-size: clamp(0.7rem, 1vw, 1.5rem);
+}
+.room-price> span{
+    font-weight: bolder;
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
 }
 .price-main-wrapper> button{
     width: fit-content;
     padding: 5px 15px;
     margin-top: 10px;
+    
 }
 
 .third-room-right-panel{
@@ -206,6 +298,52 @@ h4{
     flex: 1;
     justify-content: space-between;
     padding: 0 10px;
-
     border-bottom: 1px rgb(196, 194, 194) solid;
+}
+.more-rooms{
+    width: 100%;
+    margin: 2px auto 0 auto;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    border-top: 1px rgb(196, 194, 194) solid;
+}
+.more-rooms::after{
+    content: "▼";
+    position: absolute;
+    width: fit-content;
+    right: 43%;
+    top: 25%;
+}
+@media only screen and (max-width: 540px){
+    .more-rooms::after{
+        content: "";
+    }
+}
+.more-rooms:hover{
+    color: blue;
+    background-color: aliceblue;
+}
+.fourth-room-right-panel{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-bottom: 1px rgb(196, 194, 194) solid;
+}
+.fifth-room-right-panel{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-bottom: 1px rgb(196, 194, 194) solid; 
 }
