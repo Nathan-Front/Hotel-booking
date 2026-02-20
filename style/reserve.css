@@ -3,6 +3,10 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+main{
+    background-color: rgb(235, 235, 235);
+    padding: 30px 0;
+}
 ul{
     list-style: none;
     margin: 0;
@@ -28,27 +32,19 @@ h4{
     font-size: clamp(1rem, 1.4vw, 1.6rem);
     margin: 0;
 }
-.reserve-first-section,
-.reserve-second-section,
-.reserve-third-section,
-.reserve-fourth-section{
+.reserve-section{
     width: 90%;
-    margin: 30px auto 0 auto;
+    margin: 0 auto 30px auto;
     display: flex;
     flex-direction: column;
-    border: 1px rgb(207, 207, 207) solid;
+    border-radius: 0.25em;
+    background-color: white;
 }
-.reserve-first-section> h3,
-.reserve-second-section> h3,
-.reserve-third-section> h3,
-.reserve-fourth-section> h3{
+.reserve-section> h3{
     margin: 10px 0 0 10px;
     color: blue;
 }
-.reserve-first-section> p,
-.reserve-second-section> p,
-.reserve-third-section> p,
-.reserve-fourth-section> p{
+.reserve-section> p{
     margin: 0 0 0 10px;
     color: rgb(59, 67, 110);
 }
@@ -154,10 +150,8 @@ h4{
     padding: 0;
 }
 .first-room-right-panel{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -178,10 +172,8 @@ h4{
 }
 
 .right-panel-descript{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
     gap: 0.25em;
@@ -195,14 +187,8 @@ h4{
     width: clamp(15px, 1.5vw, 30px);
 }
 .second-room-right-panel{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    display: flex;
-    flex: 1;
-    padding: 0 10px;
-    border-bottom: 1px rgb(196, 194, 194) solid;
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
 }
 .right-panel-descript{
     display: flex;
@@ -290,15 +276,9 @@ h4{
 }
 
 .third-room-right-panel{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 3;
-    grid-row-end: 4;
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
     display: flex;
-    flex: 1;
-    justify-content: space-between;
-    padding: 0 10px;
-    border-bottom: 1px rgb(196, 194, 194) solid;
 }
 .more-rooms{
     width: 100%;
@@ -309,12 +289,18 @@ h4{
     position: relative;
     border-top: 1px rgb(196, 194, 194) solid;
 }
-.more-rooms::after{
-    content: "▼";
-    position: absolute;
-    width: fit-content;
-    right: 43%;
-    top: 25%;
+.triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 8px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid black;
+  transition: transform 0.3s ease;
+}
+.more-rooms.active .triangle {
+  transform: rotate(180deg);
 }
 @media only screen and (max-width: 540px){
     .more-rooms::after{
@@ -325,25 +311,37 @@ h4{
     color: blue;
     background-color: aliceblue;
 }
-.fourth-room-right-panel{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 4;
-    grid-row-end: 5;
+.second-room-right-panel,
+.third-room-right-panel,
+.fourth-room-right-panel,
+.fifth-room-right-panel,
+.sixth-room-right-panel,
+.seventh-room-right-panel,
+.eigth-room-right-panel,
+.ninth-room-right-panel,
+.tenth-room-right-panel{
     display: flex;
     flex: 1;
-    justify-content: space-between;
     padding: 0 10px;
     border-bottom: 1px rgb(196, 194, 194) solid;
 }
+.fourth-room-right-panel{
+    grid-column: 1 / 4;
+    grid-row: 4 / 5;
+}
 .fifth-room-right-panel{
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 5;
-    grid-row-end: 6;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    padding: 0 10px;
-    border-bottom: 1px rgb(196, 194, 194) solid; 
+    grid-column: 1 / 4;
+    grid-row: 5 / 6;
+}
+.sixth-room-right-panel{
+    grid-column: 1 / 4;
+    grid-row: 6 / 7;
+}
+.seventh-room-right-panel{
+    grid-column: 1 / 4;
+    grid-row: 7 / 8;
+}
+.eigth-room-right-panel{
+    grid-column: 1 / 4;
+    grid-row: 8 / 9;
 }
