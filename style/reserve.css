@@ -55,6 +55,7 @@ h4{
     height: 450px;
     overflow: hidden;
     transition: height 0.3s ease;
+    gap: 10px;
 }
 .section-sub-wrapper.show-other-rooms{
     display: flex;
@@ -145,16 +146,20 @@ h4{
     border-left: 1px rgb(196, 194, 194) solid;
     border-right: 1px rgb(196, 194, 194) solid;
     flex: 1;
-    margin: 0 20px;
+    margin: 0 10px 0 0;
     border-radius: 0.25em;
     padding: 0;
+}
+@media only screen and (max-width: 540px){
+    .room-right-panel{
+        margin: 0 auto;
+    }
 }
 .first-room-right-panel{
     grid-column: 1 / 4;
     grid-row: 1 / 2;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     background-color: rgb(222, 222, 222);
     border-bottom: 1px rgb(196, 194, 194) solid;
     padding: 8px 10px;
@@ -169,6 +174,7 @@ h4{
     display: flex;
     flex: 0.5;
     justify-content: center;
+
 }
 
 .right-panel-descript{
@@ -193,23 +199,30 @@ h4{
 .right-panel-descript{
     display: flex;
     justify-content: center;
-    flex: 1;
+    flex: 1.1;
 }
 .person-wrapper{
     border-left: 1px rgb(196, 194, 194) solid;
     border-right: 1px rgb(196, 194, 194) solid;
-    flex: 0.5;
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; 
     justify-content: center;
     align-items: center;
+    flex: 0.5;
+    flex-wrap: wrap;
+    align-content: center;
 }
 .person{
-    width: clamp(15px, 1.5vw, 30px);
-    height: clamp(15px, 1.5vw, 30px);
+    width: clamp(16px, 1.5vw, 30px);
+    height: clamp(16px, 1.5vw, 30px);
 }
 .person-wrapper>span{
     font-size: clamp(1rem, 1.3vw, 2.5rem);
+}
+.person-children{
+    width: clamp(12px, 1.2vw, 20px);
+    height: clamp(12px, 1.2vw, 20px);
+    display: flex;
+    margin-top: 4px;
 }
 .price-main-wrapper{
     display: flex;
@@ -221,26 +234,45 @@ h4{
     margin-left: 30px;
 }
 @media only screen and (max-width: 540px){
+    .right-panel-descript> li{
+        gap: 3px;
+    }
     .person-wrapper{
-        flex: 0 0 auto;
+
+       padding: 0 3px;
     }
     .price-main-wrapper{
         margin-left: 10px;
     }
 }
+@media (min-width: 541px) and (max-width: 768px){
+    .right-panel-descript> li{
+        gap: 5px;
+    }
+    .person-wrapper{
+       padding: 0 5px;
+    }
+    .price-main-wrapper{
+        margin-left: 5px;
+    }
+}
 .price-wrapper{
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 .price-wrapper> li{
     display: flex;
     align-items: center;
+    align-content: flex-start;
+
 }
 .special-price> p{
     color: rgb(255, 78, 78);
     background-color: rgb(255, 228, 228);
     padding: 2px 3px;
     border-radius: 0.25em;
+    
 }
 .special-price> span{
     margin-left: 5px;
@@ -257,12 +289,12 @@ h4{
 }
 .room-price{
     display: flex;
-    gap: 10px;
 }
 .room-price> p{
     text-decoration: line-through;
     opacity: 0.5; 
     font-size: clamp(0.7rem, 1vw, 1.5rem);
+    margin-right: 10px;
 }
 .room-price> span{
     font-weight: bolder;
@@ -274,7 +306,6 @@ h4{
     margin-top: 10px;
     
 }
-
 .third-room-right-panel{
     grid-column: 1 / 4;
     grid-row: 3 / 4;
@@ -324,6 +355,19 @@ h4{
     flex: 1;
     padding: 0 10px;
     border-bottom: 1px rgb(196, 194, 194) solid;
+}
+@media only screen and (max-width: 540px){
+    .second-room-right-panel,
+    .third-room-right-panel,
+    .fourth-room-right-panel,
+    .fifth-room-right-panel,
+    .sixth-room-right-panel,
+    .seventh-room-right-panel,
+    .eigth-room-right-panel,
+    .ninth-room-right-panel,
+    .tenth-room-right-panel{
+        padding: 0 5px;
+    }
 }
 .fourth-room-right-panel{
     grid-column: 1 / 4;

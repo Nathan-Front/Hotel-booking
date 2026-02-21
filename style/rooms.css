@@ -186,6 +186,10 @@ h2{
     overflow: hidden;
     border-radius: 0.25em;
 }
+.rooms-room-panels>a{
+    display: flex;
+    flex-direction: column;
+}
 .rooms-room-panels:hover{
     cursor: pointer;
 }
@@ -203,13 +207,13 @@ h2{
     transform-origin: center;
     transition: transform 0.5s ease;
 }
-.rooms-room-panels>h3{
+.rooms-room-panels> a> h3{
     font-size: clamp(1.2rem, 1.8vw, 2rem);
     text-align: center;
     margin: 0;
     padding: 20px 0;
 }
-.rooms-room-panels>p{
+.rooms-room-panels> a> p{
     font-size: clamp(1rem, 1.5vw, 1.7rem);
     text-align: center;
     padding-bottom: clamp(20px, 2vw, 30px);

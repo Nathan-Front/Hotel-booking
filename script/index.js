@@ -223,3 +223,5 @@ function galleryMobileTouch(){
 }
 window.addEventListener("resize", galleryMobileTouch);
 document.addEventListener("DOMContentLoaded", galleryMobileTouch);
+
+
