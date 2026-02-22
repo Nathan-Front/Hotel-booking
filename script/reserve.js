@@ -79,9 +79,13 @@ async function initAsync() {
   await fetchRooms();
   await fetchBottomSections();
   scrollHash();
-
 }
-initAsync();
+//Temporary disabled
+//initAsync();
+
+function displayMoreDetails(){
+ const moreDetailsBtn = document.querySelectorAll(".more-button");
+}
 
 function displayOtherRooms(){
     const showMore = document.querySelectorAll(".more-rooms");

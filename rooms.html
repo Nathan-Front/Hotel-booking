@@ -9,126 +9,127 @@
     <title>Rooms</title>
   </head>
   <body>
-    <section class="rooms-first-section">
-      <form action="" id="rooms-form" class="rooms-form-wrapper">
-        <div class="check-in-out-wrapper">
-          <div class="input-group">
-            <label for="checkin">Check-in</label>
-            <input type="date" id="checkin" required />
-          </div>
+    <main>
+      <section class="rooms-first-section">
+        <form action="" id="rooms-form" class="rooms-form-wrapper">
+          <div class="check-in-out-wrapper">
+            <div class="input-group">
+              <label for="checkin">Check-in</label>
+              <input type="date" id="checkin" required />
+            </div>
 
-          <div class="input-group">
-            <label for="checkout">Check-out</label>
-            <input type="date" id="checkout" required />
-          </div>
+            <div class="input-group">
+              <label for="checkout">Check-out</label>
+              <input type="date" id="checkout" required />
+            </div>
 
-          <p id="nights"></p>
-        </div>
-        <div class="user-reserve-info-wrapper">
-          <div class="reserve-counter">
-            <img
-              src="./images/rooms/logo/user-alt-1-svgrepo-com.svg"
-              alt="user logo"
-            />
+            <p id="nights"></p>
           </div>
-          <div class="reserve-counter">
-            <span id="adult-counter">0</span>
-            <p>Adult</p>
-          </div>
-          <div class="reserve-counter">
-            <span id="children-counter">0</span>
-            <p>Children</p>
-          </div>
-          <div class="reserve-counter">
-            <span id="room-counter">0</span>
-            <p>Rooms</p>
-          </div>
-          <div class="reserve-info-wrapper">
-            <div class="reserve-count-wrapper">
-              <label class="labels" for="adult-input">Adults</label>
-              <div class="counter">
-                <button
-                  type="button"
-                  class="decrease-button"
-                  data-target="adult-counter"
-                >
-                  -
-                </button>
-                <input
-                  type="number"
-                  id="adult-input"
-                  name="adults"
-                  value="0"
-                  min="0"
-                  max="10"
-                  readonly
-                />
-                <button
-                  type="button"
-                  class="increase-button"
-                  data-target="adult-counter"
-                >
-                  +
-                </button>
-              </div>
+          <div class="user-reserve-info-wrapper">
+            <div class="reserve-counter">
+              <img
+                src="./images/rooms/logo/user-alt-1-svgrepo-com.svg"
+                alt="user logo"
+              />
             </div>
-            <div class="reserve-count-wrapper">
-              <label class="labels" for="children-input">Children</label>
-              <div class="counter">
-                <button
-                  type="button"
-                  class="decrease-button"
-                  data-target="children-counter"
-                >
-                  -
-                </button>
-                <input
-                  type="number"
-                  id="children-input"
-                  name="children"
-                  value="0"
-                  min="0"
-                  max="10"
-                  readonly
-                />
-                <button
-                  type="button"
-                  class="increase-button"
-                  data-target="children-counter"
-                >
-                  +
-                </button>
-              </div>
+            <div class="reserve-counter">
+              <span id="adult-counter">0</span>
+              <p>Adult</p>
             </div>
-            <div class="reserve-count-wrapper">
-              <label class="labels" for="rooms-input">Rooms</label>
-              <div class="counter">
-                <button
-                  type="button"
-                  class="decrease-button"
-                  data-target="room-counter"
-                >
-                  -
-                </button>
-                <input
-                  type="number"
-                  id="rooms-input"
-                  name="rooms"
-                  value="0"
-                  min="0"
-                  max="10"
-                  readonly
-                />
-                <button
-                  type="button"
-                  class="increase-button"
-                  data-target="room-counter"
-                >
-                  +
-                </button>
-              </div>
+            <div class="reserve-counter">
+              <span id="children-counter">0</span>
+              <p>Children</p>
             </div>
-            <!--<div class="add-food">
+            <div class="reserve-counter">
+              <span id="room-counter">0</span>
+              <p>Rooms</p>
+            </div>
+            <div class="reserve-info-wrapper">
+              <div class="reserve-count-wrapper">
+                <label class="labels" for="adult-input">Adults</label>
+                <div class="counter">
+                  <button
+                    type="button"
+                    class="decrease-button"
+                    data-target="adult-counter"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    id="adult-input"
+                    name="adults"
+                    value="0"
+                    min="0"
+                    max="10"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="increase-button"
+                    data-target="adult-counter"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="reserve-count-wrapper">
+                <label class="labels" for="children-input">Children</label>
+                <div class="counter">
+                  <button
+                    type="button"
+                    class="decrease-button"
+                    data-target="children-counter"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    id="children-input"
+                    name="children"
+                    value="0"
+                    min="0"
+                    max="10"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="increase-button"
+                    data-target="children-counter"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="reserve-count-wrapper">
+                <label class="labels" for="rooms-input">Rooms</label>
+                <div class="counter">
+                  <button
+                    type="button"
+                    class="decrease-button"
+                    data-target="room-counter"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    id="rooms-input"
+                    name="rooms"
+                    value="0"
+                    min="0"
+                    max="10"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    class="increase-button"
+                    data-target="room-counter"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <!--<div class="add-food">
               <label class="switch">
                 <p>Add Breakfast</p>
                 <input type="checkbox" />
@@ -141,335 +142,340 @@
               </label>
             </div>-->
 
-            <div class="children-note">
-              <p>Children are age 17 years old and below</p>
+              <div class="children-note">
+                <p>Children are age 17 years old and below</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <button type="submit" class="check-available-button">
-          Check Availability
-        </button>
-      </form>
-    </section>
-    <section class="rooms-second-section">
-      <h2>Rooms</h2>
-      <ul class="rooms-room-wrapper">
-        <li class="rooms-room-panels">
-          <a href="reserve.html#twin-bed-single-rooms">
-            <div class="rooms-room-images">
-              <img
-                src="./images/index/rooms/twinbed single.jpg"
-                alt="twinbed single"
-                loading="lazy"
-              />
-            </div>
-            <h3>Twin bed (Single) rooms</h3>
-            <p>$90 per night</p>
-          </a>
-        </li>
-        <li class="rooms-room-panels">
-          <a href="reserve.html#twin-bed-full-rooms">
-            <div class="rooms-room-images">
+          <button type="submit" class="check-available-button">
+            Check Availability
+          </button>
+        </form>
+      </section>
+      <section class="rooms-second-section">
+        <h2>Rooms</h2>
+        <ul class="rooms-room-wrapper">
+          <li class="rooms-room-panels">
+            <a href="reserve.html#twin-bed-single-rooms">
+              <div class="rooms-room-images">
+                <img
+                  src="./images/index/rooms/twinbed single.jpg"
+                  alt="twinbed single"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Twin bed (Single) rooms</h3>
+              <p>$90 per night</p>
+            </a>
+          </li>
+          <li class="rooms-room-panels">
+            <a href="reserve.html#twin-bed-full-rooms">
+              <div class="rooms-room-images">
+                <img
+                  src="./images/index/rooms/twinbed double.jpg"
+                  alt="twinbed single"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Twin bed (Double) rooms</h3>
+              <p>$100 per night</p>
+            </a>
+          </li>
+          <li class="rooms-room-panels">
+            <a href="reserve.html#double-bed-rooms">
+              <div class="rooms-room-images">
+                <img
+                  src="./images/index/rooms/doublebed full.jpg"
+                  alt="twinbed single"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Double bed (Full) rooms</h3>
+              <p>$110 per night</p>
+            </a>
+          </li>
+          <li class="rooms-room-panels">
+            <a href="reserve.html#queen-rooms">
+              <div class="rooms-room-images">
+                <img
+                  src="./images/index/rooms/queenbed.jpeg"
+                  alt="twinbed single"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Queen bed rooms</h3>
+              <p>$150 per night</p>
+            </a>
+          </li>
+          <li class="rooms-room-panels">
+            <a href="reserve.html#king-rooms">
+              <div class="rooms-room-images">
+                <img
+                  src="./images/index/rooms/kingbed.jpg"
+                  alt="twinbed single"
+                  loading="lazy"
+                />
+              </div>
+              <h3>King bed rooms</h3>
+              <p>$180 per night</p>
+            </a>
+          </li>
+          <li class="rooms-room-panels" id="family-room">
+            <a href="reserve.html#family-rooms">
+              <div class="rooms-room-images">
+                <img
+                  src="./images/rooms/secondSection/family-room.jpeg"
+                  alt="twinbed single"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Family rooms</h3>
+              <p>$250 per night</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="rooms-third-section">
+        <h2>Our mostly booked rooms</h2>
+        <p>These are rooms that have a good scenery.</p>
+        <ul class="most-booked-wrapper">
+          <li class="most-booked-panels">
+            <div class="most-booked-images">
               <img
                 src="./images/index/rooms/twinbed double.jpg"
-                alt="twinbed single"
+                alt="twinbed double bed"
                 loading="lazy"
               />
             </div>
-            <h3>Twin bed (Double) rooms</h3>
-            <p>$100 per night</p>
-          </a>
-        </li>
-        <li class="rooms-room-panels">
-          <a href="reserve.html#double-bed-rooms">
-            <div class="rooms-room-images">
-              <img
-                src="./images/index/rooms/doublebed full.jpg"
-                alt="twinbed single"
-                loading="lazy"
-              />
+            <div class="recommend-rooms">
+              <h3>Twin bed (Double) rooms</h3>
+              <div class="star-rating">★★★★☆</div>
             </div>
-            <h3>Double bed (Full) rooms</h3>
-            <p>$110 per night</p>
-          </a>
-        </li>
-        <li class="rooms-room-panels">
-          <a href="reserve.html#queen-rooms">
-            <div class="rooms-room-images">
+            <div class="recommend-details">
+              <p>
+                I had a very pleasant stay at this hotel. The room was clean,
+                comfortable, and quiet, and the bed was very cozy. The staff
+                were friendly and helpful, and check-in was quick and easy. I
+                would recommend this hotel and would stay here again.
+              </p>
+            </div>
+          </li>
+          <li class="most-booked-panels">
+            <div class="most-booked-images">
               <img
                 src="./images/index/rooms/queenbed.jpeg"
-                alt="twinbed single"
+                alt="queen bed"
                 loading="lazy"
               />
             </div>
-            <h3>Queen bed rooms</h3>
-            <p>$150 per night</p>
-          </a>
-        </li>
-        <li class="rooms-room-panels">
-          <a href="reserve.html#king-rooms">
-            <div class="rooms-room-images">
+            <div class="recommend-rooms">
+              <h3>Queen bed rooms</h3>
+              <div class="star-rating">★★★★☆</div>
+            </div>
+            <div class="recommend-details">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate fugiat ipsa perferendis enim ab quae, error nam in ea
+                voluptates ut iure eligendi obcaecati eum non, rerum dicta aut
+                doloribus.
+              </p>
+            </div>
+          </li>
+          <li class="most-booked-panels">
+            <div class="most-booked-images">
               <img
                 src="./images/index/rooms/kingbed.jpg"
-                alt="twinbed single"
+                alt="king bed"
                 loading="lazy"
               />
             </div>
-            <h3>King bed rooms</h3>
-            <p>$180 per night</p>
-          </a>
-        </li>
-        <li class="rooms-room-panels" id="family-room">
-          <a href="reserve.html#family-rooms">
-            <div class="rooms-room-images">
+            <div class="recommend-rooms">
+              <h3>King bed rooms</h3>
+              <div class="star-rating">★★★★★</div>
+            </div>
+            <div class="recommend-details">
+              <p>
+                The view from the room was gorgeous, especially during dawn. You
+                can clearly see the horizon on the distance while the sun is
+                setting.
+              </p>
+            </div>
+          </li>
+          <li class="most-booked-panels">
+            <div class="most-booked-images">
               <img
                 src="./images/rooms/secondSection/family-room.jpeg"
-                alt="twinbed single"
+                alt="family room"
                 loading="lazy"
               />
             </div>
-            <h3>Family rooms</h3>
-            <p>$250 per night</p>
-          </a>
-        </li>
-      </ul>
-    </section>
-    <section class="rooms-third-section">
-      <h2>Our mostly booked rooms</h2>
-      <p>These are rooms that have a good scenery.</p>
-      <ul class="most-booked-wrapper">
-        <li class="most-booked-panels">
-          <div class="most-booked-images">
-            <img
-              src="./images/index/rooms/twinbed double.jpg"
-              alt="twinbed double bed"
-              loading="lazy"
-            />
-          </div>
-          <div class="recommend-rooms">
-            <h3>Twin bed (Double) rooms</h3>
-            <div class="star-rating">★★★★☆</div>
-          </div>
-          <div class="recommend-details">
-            <p>
-              I had a very pleasant stay at this hotel. The room was clean,
-              comfortable, and quiet, and the bed was very cozy. The staff were
-              friendly and helpful, and check-in was quick and easy. I would
-              recommend this hotel and would stay here again.
-            </p>
-          </div>
-        </li>
-        <li class="most-booked-panels">
-          <div class="most-booked-images">
-            <img
-              src="./images/index/rooms/queenbed.jpeg"
-              alt="queen bed"
-              loading="lazy"
-            />
-          </div>
-          <div class="recommend-rooms">
-            <h3>Queen bed rooms</h3>
-            <div class="star-rating">★★★★☆</div>
-          </div>
-          <div class="recommend-details">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Cupiditate fugiat ipsa perferendis enim ab quae, error nam in ea
-              voluptates ut iure eligendi obcaecati eum non, rerum dicta aut
-              doloribus.
-            </p>
-          </div>
-        </li>
-        <li class="most-booked-panels">
-          <div class="most-booked-images">
-            <img
-              src="./images/index/rooms/kingbed.jpg"
-              alt="king bed"
-              loading="lazy"
-            />
-          </div>
-          <div class="recommend-rooms">
-            <h3>King bed rooms</h3>
-            <div class="star-rating">★★★★★</div>
-          </div>
-          <div class="recommend-details">
-            <p>
-              The view from the room was gorgeous, especially during dawn. You
-              can clearly see the horizon on the distance while the sun is
-              setting.
-            </p>
-          </div>
-        </li>
-        <li class="most-booked-panels">
-          <div class="most-booked-images">
-            <img
-              src="./images/rooms/secondSection/family-room.jpeg"
-              alt="family room"
-              loading="lazy"
-            />
-          </div>
-          <div class="recommend-rooms">
-            <h3>Family rooms</h3>
-            <div class="star-rating">★★★★★</div>
-          </div>
-          <div class="recommend-details">
-            <p>
-              The view of sunset was just so beautiful. Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Officia deserunt unde totam,
-              eaque rerum molestiae iste, distinctio repudiandae ut repellendus
-              asperiores architecto, nihil dolores corrupti saepe eligendi
-              tempore. Quidem, impedit.
-            </p>
-          </div>
-        </li>
-      </ul>
-    </section>
-    <section class="rooms-fourth-section">
-      <h2>Frequently Asked Questions</h2>
-      <div>
-        <ul class="faq-wrapper">
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                What time is check-in and check-out?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Check-in begins at 3:00 PM, and check-out is until 11:00 AM.
-                  Early check-in and late check-out are subject to availability.
-                </p>
-              </div>
+            <div class="recommend-rooms">
+              <h3>Family rooms</h3>
+              <div class="star-rating">★★★★★</div>
             </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Can I cancel or modify my reservation?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes. Most bookings can be modified or canceled free of charge
-                  up to 24–48 hours before arrival, depending on the rate
-                  selected. Please check your confirmation email for details.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Do you require a deposit?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Some room types or promotional rates may require a deposit at
-                  the time of booking. Flexible rates typically do not require
-                  prepayment.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Do you provide airport transportation?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Airport transfer services may be available upon request for an
-                  additional fee. Please contact the front desk at least 24
-                  hours before arrival.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                What should I do if I haven’t received a booking confirmation?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Please check your spam/junk folder first. If you still cannot
-                  find it, contact our reservations team with your booking
-                  details.
-                </p>
-              </div>
+            <div class="recommend-details">
+              <p>
+                The view of sunset was just so beautiful. Lorem ipsum dolor sit
+                amet, consectetur adipisicing elit. Officia deserunt unde totam,
+                eaque rerum molestiae iste, distinctio repudiandae ut
+                repellendus asperiores architecto, nihil dolores corrupti saepe
+                eligendi tempore. Quidem, impedit.
+              </p>
             </div>
           </li>
         </ul>
-        <ul class="faq-wrapper">
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                What payment methods do you accept?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  We accept major credit and debit cards including: Visa,
-                  MasterCard, American Express, JCB, Cash payments may be
-                  accepted at the property.
-                </p>
+      </section>
+      <section class="rooms-fourth-section">
+        <h2>Frequently Asked Questions</h2>
+        <div>
+          <ul class="faq-wrapper">
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  What time is check-in and check-out?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Check-in begins at 3:00 PM, and check-out is until 11:00 AM.
+                    Early check-in and late check-out are subject to
+                    availability.
+                  </p>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Is breakfast included in the room rate?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Breakfast inclusion depends on the rate you select. Please
-                  review your booking details to confirm whether breakfast is
-                  included.
-                </p>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Can I cancel or modify my reservation?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Yes. Most bookings can be modified or canceled free of
+                    charge up to 24–48 hours before arrival, depending on the
+                    rate selected. Please check your confirmation email for
+                    details.
+                  </p>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Do you offer free Wi-Fi?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes, complimentary high-speed Wi-Fi is available throughout
-                  the hotel, including guest rooms and public areas.
-                </p>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Do you require a deposit?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Some room types or promotional rates may require a deposit
+                    at the time of booking. Flexible rates typically do not
+                    require prepayment.
+                  </p>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Is parking available?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes, we offer on-site parking. Charges may apply. Advance
-                  reservation is recommended.
-                </p>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Do you provide airport transportation?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Airport transfer services may be available upon request for
+                    an additional fee. Please contact the front desk at least 24
+                    hours before arrival.
+                  </p>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="faq-panels">
-            <div class="faq-item">
-              <button type="button" class="faq-question">
-                Are pets allowed?
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Pets are not permitted unless otherwise stated. Please contact
-                  us in advance if you plan to travel with a service animal.
-                </p>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  What should I do if I haven’t received a booking confirmation?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Please check your spam/junk folder first. If you still
+                    cannot find it, contact our reservations team with your
+                    booking details.
+                  </p>
+                </div>
               </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
+            </li>
+          </ul>
+          <ul class="faq-wrapper">
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  What payment methods do you accept?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    We accept major credit and debit cards including: Visa,
+                    MasterCard, American Express, JCB, Cash payments may be
+                    accepted at the property.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Is breakfast included in the room rate?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Breakfast inclusion depends on the rate you select. Please
+                    review your booking details to confirm whether breakfast is
+                    included.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Do you offer free Wi-Fi?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Yes, complimentary high-speed Wi-Fi is available throughout
+                    the hotel, including guest rooms and public areas.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Is parking available?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Yes, we offer on-site parking. Charges may apply. Advance
+                    reservation is recommended.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-panels">
+              <div class="faq-item">
+                <button type="button" class="faq-question">
+                  Are pets allowed?
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Pets are not permitted unless otherwise stated. Please
+                    contact us in advance if you plan to travel with a service
+                    animal.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
     <script src="./script/rooms.js" defer></script>
   </body>
 </html>

@@ -25,6 +25,7 @@ async function fetchBottomSections() {
     const container = document.querySelector("body");
     container.insertAdjacentHTML("beforeend", mobileNavHTML);
 }
+
 async function initAsync() {
   await fetchNavbar();
   await fetchBottomSections();
