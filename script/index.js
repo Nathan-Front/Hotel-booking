@@ -4,28 +4,32 @@ async function fetchNavbar(){
   const navContainer = document.querySelector("body");
   navContainer.insertAdjacentHTML("afterbegin", navHTML);
 }
-fetchNavbar();
 
 async function fetchBottomSections() {
   const body = document.body;
 
-  // Load footer first
+  //load footer
   const footerRes = await fetch("footer.html");
   const footerHTML = await footerRes.text();
   body.insertAdjacentHTML("beforeend", footerHTML);
 
-  // Then load alright
+  //load alright
   const alrightRes = await fetch("alright.html");
   const alrightHTML = await alrightRes.text();
   body.insertAdjacentHTML("beforeend", alrightHTML);
 
+  //If mobileviewport
   if(window.innerWidth > 540) return;
     const res = await fetch("mobileNavigation.html");
     const mobileNavHTML = await res.text();
     const container = document.querySelector("body");
     container.insertAdjacentHTML("beforeend", mobileNavHTML);
 }
-fetchBottomSections();
+async function initAsync() {
+  await fetchNavbar();
+  await fetchBottomSections();
+}
+initAsync();
 
 let firstSectionImages = document.querySelectorAll(".room-image");
 let currentImageIndex = 0;

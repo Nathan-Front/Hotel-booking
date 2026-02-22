@@ -2,11 +2,13 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 main{
     background-color: rgb(235, 235, 235);
     padding: 30px 0;
 }
+
 ul{
     list-style: none;
     margin: 0;
@@ -26,7 +28,6 @@ p, button{
 }
 h3{
     font-size: clamp(1.1rem, 1.6vw, 1.8rem);
-    margin: 0;
 }
 h4{
     font-size: clamp(1rem, 1.4vw, 1.6rem);
@@ -54,8 +55,9 @@ h4{
     flex-wrap: wrap;
     height: 450px;
     overflow: hidden;
-    transition: height 0.3s ease;
-    gap: 10px;
+    transition: height 0.4s ease;
+    gap: 20px;
+    overflow: hidden;
 }
 .section-sub-wrapper.show-other-rooms{
     display: flex;
@@ -109,6 +111,7 @@ h4{
     border: none;
     border-radius: 0.25em;
     color: white;
+    box-shadow: 4px 4px 5px rgba(23, 23, 23, 0.4);
 }
 @media only screen and (max-width: 540px){
     .reserve-first-section{
@@ -286,6 +289,7 @@ h4{
     border: none;
     border-radius: 0.25em;
     color: white;
+    box-shadow: 4px 4px 5px rgba(23, 23, 23, 0.4);
 }
 .room-price{
     display: flex;
