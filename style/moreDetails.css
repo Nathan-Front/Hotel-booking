@@ -110,7 +110,7 @@ ul> li{
     text-decoration: line-through;
     opacity: 0.4;
 }
-@media only screen and (max-width: 540px){
+@media only screen and (max-width: 550px){
     .more-details-wrapper{
         display: flex;
         flex-direction: column;
@@ -129,8 +129,8 @@ ul> li{
         width: clamp(100px, 48%, 400px);
     }
 }
-@media (min-width: 541px) and (max-width:768px){
+@media (min-width: 551px) and (max-width:768px){
     .left-container> img{
-        width: clamp(40px, 48%, 400px);
+        width: clamp(30px, 48%, 400px);
     }
 }

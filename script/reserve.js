@@ -77,14 +77,26 @@ async function fetchRooms(){
 function displayMoreDetails(){
  const moreDetailsBtn = document.querySelectorAll(".more-button");
  const closeMoreDetailsBtn = document.querySelector(".close-button");
-
+const container = document.querySelector("body");
  if(moreDetailsBtn){
     moreDetailsBtn.forEach(btn =>{
     btn.addEventListener("click", async ()=>{
-    const moreRes = await fetch("rooms-more-details/twinBedSingleMore.html");
-    const moreHTML = await moreRes.text();
-    const container = document.querySelector("body");
-    container.insertAdjacentHTML("afterbegin", moreHTML);
+    const roomType = btn.closest(".reserve-section");
+    if(roomType.id === "twin-bed-single-rooms"){
+        const moreRes = await fetch("rooms-more-details/twinBedSingleMore.html");
+        const moreHTML = await moreRes.text();
+        container.insertAdjacentHTML("afterbegin", moreHTML);
+    }
+    if(roomType.id === "twin-bed-full-rooms"){
+        const moreRes = await fetch("rooms-more-details/twinBedFullMore.html");
+        const moreHTML = await moreRes.text();
+        container.insertAdjacentHTML("afterbegin", moreHTML);
+    }
+    if(roomType.id === "double-bed-rooms"){
+        const moreRes = await fetch("rooms-more-details/doubleBedMore.html");
+        const moreHTML = await moreRes.text();
+        container.insertAdjacentHTML("afterbegin", moreHTML);
+    }
     container.classList.add("no-scroll");
     const lockWrapper = document.querySelector(".lock-wrapper");
     const popup = document.querySelector(".more-details-wrapper");
