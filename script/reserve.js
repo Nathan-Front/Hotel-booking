@@ -30,27 +30,27 @@ async function fetchBottomSections() {
 async function fetchRooms(){
     const roomContainer = document.querySelector(".rooms-container");
 
-    const resSingle = await fetch("reserve rooms html/twinBedSingle.html");
+    const resSingle = await fetch("reserve-rooms-html/twinBedSingle.html");
     const twinSingleHTML = await resSingle.text();
     roomContainer.insertAdjacentHTML("afterbegin", twinSingleHTML);
 
-    const resFull = await fetch("reserve rooms html/twinBedFull.html");
+    const resFull = await fetch("reserve-rooms-html/twinBedFull.html");
     const twinFullHTML = await resFull.text();
     roomContainer.insertAdjacentHTML("beforeend", twinFullHTML);
 
-    const resDouble = await fetch("reserve rooms html/doubleBed.html");
+    const resDouble = await fetch("reserve-rooms-html/doubleBed.html");
     const doubleFullHTML = await resDouble.text();
     roomContainer.insertAdjacentHTML("beforeend", doubleFullHTML);
 
-    const resQueen = await fetch("reserve rooms html/queenBed.html");
+    const resQueen = await fetch("reserve-rooms-html/queenBed.html");
     const queenHTML = await resQueen.text();
     roomContainer.insertAdjacentHTML("beforeend", queenHTML);
 
-    const resKing = await fetch("reserve rooms html/kingBed.html");
+    const resKing = await fetch("reserve-rooms-html/kingBed.html");
     const kingHTML = await resKing.text();
     roomContainer.insertAdjacentHTML("beforeend", kingHTML);
 
-    const resFamily = await fetch("reserve rooms html/family.html");
+    const resFamily = await fetch("reserve-rooms-html/family.html");
     const familyHTML = await resFamily.text();
     roomContainer.insertAdjacentHTML("beforeend", familyHTML);
 
@@ -74,18 +74,49 @@ async function fetchRooms(){
     displayOtherRooms();
 }
 
+function displayMoreDetails(){
+ const moreDetailsBtn = document.querySelectorAll(".more-button");
+ const closeMoreDetailsBtn = document.querySelector(".close-button");
+
+ if(moreDetailsBtn){
+    moreDetailsBtn.forEach(btn =>{
+    btn.addEventListener("click", async ()=>{
+    const moreRes = await fetch("rooms-more-details/twinBedSingleMore.html");
+    const moreHTML = await moreRes.text();
+    const container = document.querySelector("body");
+    container.insertAdjacentHTML("afterbegin", moreHTML);
+    container.classList.add("no-scroll");
+    const lockWrapper = document.querySelector(".lock-wrapper");
+    const popup = document.querySelector(".more-details-wrapper");
+
+    lockWrapper.classList.add("active");
+    popup.classList.add("active");
+
+    document.addEventListener("click", (e)=>{
+          if (e.target.matches(".close-button")) {
+
+        e.target.closest(".lock-wrapper").remove();
+
+        document.body.classList.remove("no-scroll");
+    }
+    });
+    });
+    });
+ }
+ //if(closeMoreDetailsBtn){
+    
+ //}
+ 
+}
 async function initAsync() {
   await fetchNavbar();
   await fetchRooms();
   await fetchBottomSections();
   scrollHash();
+  displayMoreDetails();
 }
-//Temporary disabled
-//initAsync();
 
-function displayMoreDetails(){
- const moreDetailsBtn = document.querySelectorAll(".more-button");
-}
+document.addEventListener("DOMContentLoaded", initAsync);
 
 function displayOtherRooms(){
     const showMore = document.querySelectorAll(".more-rooms");

@@ -1,34 +1,78 @@
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+.lock-wrapper{
+    display: block;
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
 .more-details-wrapper{
     display: flex;
     flex-direction: column;
     width: 80%;
     height: 80vh;
     justify-self: center;
-    align-self: center;
-    border: 1px red solid;
+    background-color: white;
+    padding: 0 30px 10px 30px;
+    border-radius: 0.25em;
+
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 9;
+    
+    transform: translate(-50%, -20px); 
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.lock-wrapper.active{
+    opacity: 1;
+    visibility: visible;
+}
+.more-details-wrapper.active{
+    opacity: 1;
+    transform: translate(-50%, 0); 
 }
 .close-button{
-    margin: 10px 15px 0 auto;
+    margin: 10px 0 0 auto;
     font-size: 30px;
+}
+.close-button:hover{
+    cursor: pointer;
 }
 .more-details-container{
     display: flex;
     overflow: hidden;
     padding: 30px 0;
-    
+    gap: 1em;
 }
 .left-container{
     display: flex;
     flex-wrap: wrap;
-    flex: 1.5;
+    padding-bottom: 5px;
+    flex: 2;
+    gap: clamp(5px, 1.5vw, 15px);
+    overflow-y: scroll;
 }
 .left-container> img{
-    width: clamp(200px, 3vw, 400px);
-    height: clamp(200px, 3vw, 400px);
+    width: clamp(150px, 25vw, 400px);
+    height: clamp(120px, 15vw, 300px);
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 0.25em;
 }
 .right-container{
     display: flex;
     flex-direction: column;
+    padding-bottom: 5px;
     flex: 1;
 }
 .right-more-details-container{
@@ -53,6 +97,9 @@ ul{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+}
+.bed-image-wrapper{
+    display: flex;
 }
 ul> li{
     display: flex;
