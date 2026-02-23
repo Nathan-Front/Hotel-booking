@@ -15,6 +15,13 @@ body.no-scroll {
     visibility: hidden;
     transition: opacity 0.3s ease;
 }
+.close-button{
+    margin: 5px -15px 0 auto;
+    font-size: 30px;
+}
+.close-button:hover{
+    cursor: pointer;
+}
 .more-details-wrapper{
     display: flex;
     flex-direction: column;
@@ -27,12 +34,10 @@ body.no-scroll {
 
     position: fixed;
     top: 10%;
-    left: 50%;
     z-index: 9;
     
-    transform: translate(-50%, -20px); 
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease-in;
 }
 .lock-wrapper.active{
     opacity: 1;
@@ -40,14 +45,6 @@ body.no-scroll {
 }
 .more-details-wrapper.active{
     opacity: 1;
-    transform: translate(-50%, 0); 
-}
-.close-button{
-    margin: 10px 0 0 auto;
-    font-size: 30px;
-}
-.close-button:hover{
-    cursor: pointer;
 }
 .more-details-container{
     display: flex;
@@ -64,7 +61,7 @@ body.no-scroll {
     overflow-y: scroll;
 }
 .left-container> img{
-    width: clamp(150px, 25vw, 400px);
+    width: clamp(150px, 48%, 400px);
     height: clamp(120px, 15vw, 300px);
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
     border-radius: 0.25em;
@@ -104,4 +101,36 @@ ul{
 ul> li{
     display: flex;
     align-items: center;
+    gap: 3px;
+}
+.free{
+    color: rgb(206, 134, 0);
+}
+.not-available{
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+@media only screen and (max-width: 540px){
+    .more-details-wrapper{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;   
+    }
+     .more-details-container{
+        flex: 1;               
+        overflow-y: auto;       
+        flex-direction: column;
+    }
+    .left-container,
+    .right-more-details-container{
+        overflow: visible;
+    }
+    .left-container> img{
+        width: clamp(100px, 48%, 400px);
+    }
+}
+@media (min-width: 541px) and (max-width:768px){
+    .left-container> img{
+        width: clamp(40px, 48%, 400px);
+    }
 }
