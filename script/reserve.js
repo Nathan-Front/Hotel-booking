@@ -97,6 +97,21 @@ const container = document.querySelector("body");
         const moreHTML = await moreRes.text();
         container.insertAdjacentHTML("afterbegin", moreHTML);
     }
+    if(roomType.id === "queen-rooms"){
+        const moreRes = await fetch("rooms-more-details/queenBedMore.html");
+        const moreHTML = await moreRes.text();
+        container.insertAdjacentHTML("afterbegin", moreHTML);
+    }
+    if(roomType.id === "king-rooms"){
+        const moreRes = await fetch("rooms-more-details/kingBedMore.html");
+        const moreHTML = await moreRes.text();
+        container.insertAdjacentHTML("afterbegin", moreHTML);
+    }
+    if(roomType.id === "family-rooms"){
+        const moreRes = await fetch("rooms-more-details/familyMore.html");
+        const moreHTML = await moreRes.text();
+        container.insertAdjacentHTML("afterbegin", moreHTML);
+    }
     container.classList.add("no-scroll");
     const lockWrapper = document.querySelector(".lock-wrapper");
     const popup = document.querySelector(".more-details-wrapper");
