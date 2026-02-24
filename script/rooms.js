@@ -1,36 +1,4 @@
 
-async function fetchNavbar(){
-  const res = await fetch("navigation.html");
-  const navHTML = await res.text();
-  const navContainer = document.querySelector("body");
-  navContainer.insertAdjacentHTML("afterbegin", navHTML);
-}
-
-async function fetchBottomSections() {
-  const body = document.body;
-
-  //load footer
-  const footerRes = await fetch("footer.html");
-  const footerHTML = await footerRes.text();
-  body.insertAdjacentHTML("beforeend", footerHTML);
-
-  //load alright
-  const alrightRes = await fetch("alright.html");
-  const alrightHTML = await alrightRes.text();
-  body.insertAdjacentHTML("beforeend", alrightHTML);
-
-  //If mobileviewport
-  if(window.innerWidth > 540) return;
-    const res = await fetch("mobileNavigation.html");
-    const mobileNavHTML = await res.text();
-    const container = document.querySelector("body");
-    container.insertAdjacentHTML("beforeend", mobileNavHTML);
-}
-async function initAsync() {
-  await fetchNavbar();
-  await fetchBottomSections();
-}
-initAsync();
 
 function reservationInputDisplay(){
   const formWrapper = document.querySelector(".rooms-form-wrapper");
