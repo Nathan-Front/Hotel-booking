@@ -77,63 +77,41 @@ async function fetchRooms(){
 function displayMoreDetails(){
  const moreDetailsBtn = document.querySelectorAll(".more-button");
  const closeMoreDetailsBtn = document.querySelector(".close-button");
-const container = document.querySelector("body");
+ const container = document.querySelector("body");
  if(moreDetailsBtn){
     moreDetailsBtn.forEach(btn =>{
-    btn.addEventListener("click", async ()=>{
-    const roomType = btn.closest(".reserve-section");
-    if(roomType.id === "twin-bed-single-rooms"){
-        const moreRes = await fetch("rooms-more-details/twinBedSingleMore.html");
-        const moreHTML = await moreRes.text();
-        container.insertAdjacentHTML("afterbegin", moreHTML);
-    }
-    if(roomType.id === "twin-bed-full-rooms"){
-        const moreRes = await fetch("rooms-more-details/twinBedFullMore.html");
-        const moreHTML = await moreRes.text();
-        container.insertAdjacentHTML("afterbegin", moreHTML);
-    }
-    if(roomType.id === "double-bed-rooms"){
-        const moreRes = await fetch("rooms-more-details/doubleBedMore.html");
-        const moreHTML = await moreRes.text();
-        container.insertAdjacentHTML("afterbegin", moreHTML);
-    }
-    if(roomType.id === "queen-rooms"){
-        const moreRes = await fetch("rooms-more-details/queenBedMore.html");
-        const moreHTML = await moreRes.text();
-        container.insertAdjacentHTML("afterbegin", moreHTML);
-    }
-    if(roomType.id === "king-rooms"){
-        const moreRes = await fetch("rooms-more-details/kingBedMore.html");
-        const moreHTML = await moreRes.text();
-        container.insertAdjacentHTML("afterbegin", moreHTML);
-    }
-    if(roomType.id === "family-rooms"){
-        const moreRes = await fetch("rooms-more-details/familyMore.html");
-        const moreHTML = await moreRes.text();
-        container.insertAdjacentHTML("afterbegin", moreHTML);
-    }
-    container.classList.add("no-scroll");
-    const lockWrapper = document.querySelector(".lock-wrapper");
-    const popup = document.querySelector(".more-details-wrapper");
-
-    lockWrapper.classList.add("active");
-    popup.classList.add("active");
-
-    document.addEventListener("click", (e)=>{
-          if (e.target.matches(".close-button")) {
-
-        e.target.closest(".lock-wrapper").remove();
-
-        document.body.classList.remove("no-scroll");
-    }
-    });
-    });
+        btn.addEventListener("click", async ()=>{
+            const roomType = btn.closest(".reserve-section");
+            const roomFiles = {
+                "twin-bed-single-rooms": "twinBedSingleMore.html",
+                "twin-bed-full-rooms": "twinBedFullMore.html",
+                "double-bed-rooms": "doubleBedMore.html",
+                "queen-rooms": "queenBedMore.html",
+                "king-rooms": "kingBedMore.html",
+                "family-rooms": "familyMore.html"
+            };
+            const fileName = roomFiles[roomType.id];
+            if (fileName) {
+                const res = await fetch(`rooms-more-details/${fileName}`);
+                const html = await res.text();
+                container.insertAdjacentHTML("afterbegin", html);
+            }
+            container.classList.add("no-scroll");
+            const lockWrapper = document.querySelector(".lock-wrapper");
+            const popup = document.querySelector(".more-details-wrapper");
+        
+            lockWrapper.classList.add("active");
+            popup.classList.add("active");
+        
+            document.addEventListener("click", (e)=>{
+                if (e.target.matches(".close-button")) {
+                    e.target.closest(".lock-wrapper").remove();
+                    document.body.classList.remove("no-scroll");
+                }
+            });
+        });
     });
  }
- //if(closeMoreDetailsBtn){
-    
- //}
- 
 }
 async function initAsync() {
   await fetchNavbar();
@@ -142,7 +120,6 @@ async function initAsync() {
   scrollHash();
   displayMoreDetails();
 }
-
 document.addEventListener("DOMContentLoaded", initAsync);
 
 function displayOtherRooms(){
