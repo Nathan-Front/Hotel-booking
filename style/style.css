@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
 }
 ::-webkit-scrollbar {
   width: 6px;
@@ -34,6 +35,9 @@ p{
     flex-direction: row;
     align-items: center;
     padding: 5px 0;
+    background-color: white;
+    position: relative;
+    z-index: 9;
 }
 .hotel-logo{
     width: clamp(4em, 8vw, 7em);
@@ -428,6 +432,8 @@ footer{
     justify-content: space-evenly;
     padding: 50px 0;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 9;
 }
 .footer-panels{
     display: flex;
