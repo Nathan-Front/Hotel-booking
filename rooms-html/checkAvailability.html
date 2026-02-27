@@ -1,0 +1,131 @@
+<section class="rooms-first-section">
+  <form action="" id="rooms-form" class="rooms-form-wrapper">
+    <div class="check-in-out-wrapper">
+      <div class="input-group">
+        <label for="checkin">Check-in</label>
+        <input type="date" id="checkin" required />
+      </div>
+
+      <div class="input-group">
+        <label for="checkout">Check-out</label>
+        <input type="date" id="checkout" required />
+      </div>
+
+      <p id="nights"></p>
+    </div>
+    <div class="user-reserve-info-wrapper">
+      <div class="reserve-counter">
+        <img
+          src="./images/rooms/logo/user-alt-1-svgrepo-com.svg"
+          alt="user logo"
+        />
+      </div>
+      <div class="reserve-counter">
+        <span id="adult-counter">0</span>
+        <p>Adult</p>
+      </div>
+      <div class="reserve-counter">
+        <span id="children-counter">0</span>
+        <p>Children</p>
+      </div>
+      <div class="reserve-counter">
+        <span id="room-counter">0</span>
+        <p>Rooms</p>
+      </div>
+      <div class="reserve-info-wrapper">
+        <div class="reserve-count-wrapper">
+          <label class="labels" for="adult-input">Adults</label>
+          <div class="counter">
+            <button
+              type="button"
+              class="decrease-button"
+              data-target="adult-counter"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              id="adult-input"
+              name="adults"
+              value="0"
+              min="0"
+              max="10"
+              readonly
+            />
+            <button
+              type="button"
+              class="increase-button"
+              data-target="adult-counter"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="reserve-count-wrapper">
+          <label class="labels" for="children-input">Children</label>
+          <div class="counter">
+            <button
+              type="button"
+              class="decrease-button"
+              data-target="children-counter"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              id="children-input"
+              name="children"
+              value="0"
+              min="0"
+              max="10"
+              readonly
+            />
+            <button
+              type="button"
+              class="increase-button"
+              data-target="children-counter"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="reserve-count-wrapper">
+          <label class="labels" for="rooms-input">Rooms</label>
+          <div class="counter">
+            <button
+              type="button"
+              class="decrease-button"
+              data-target="room-counter"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              id="rooms-input"
+              name="rooms"
+              value="0"
+              min="0"
+              max="10"
+              readonly
+            />
+            <button
+              type="button"
+              class="increase-button"
+              data-target="room-counter"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <div class="children-note">
+          <p>Children are age 17 years old and below</p>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="check-available-button">
+      Check Availability
+    </button>
+  </form>
+</section>

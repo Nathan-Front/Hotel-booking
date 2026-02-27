@@ -1,4 +1,27 @@
 
+async function fetchRoomsPrice(){
+  const mainWrapper = document.querySelector(".rooms-main-wrapper");
+
+  const resAvailability = await fetch("./rooms-html/checkAvailability.html");
+  const checkAvaialbleHTML = await resAvailability.text();
+  mainWrapper.insertAdjacentHTML("afterbegin", checkAvaialbleHTML);
+
+  const resRoomsPrice = await fetch("./rooms-html/rooms-price.html");
+  const roomsPriceHTML = await resRoomsPrice.text();
+  mainWrapper.insertAdjacentHTML("beforeend", roomsPriceHTML);
+
+  const resMostBooked = await fetch("./rooms-html/most-booked.html");
+  const mostBookedHTML = await resMostBooked.text();
+  mainWrapper.insertAdjacentHTML("beforeend", mostBookedHTML);
+
+  const resFAQ = await fetch("./rooms-html/FAQ.html");
+  const FAQHTML = await resFAQ.text();
+  mainWrapper.insertAdjacentHTML("beforeend", FAQHTML);
+}
+async function initAsync() {
+  await fetchRoomsPrice();
+}
+document.addEventListener("DOMContentLoaded", initAsync);
 
 function reservationInputDisplay(){
   const formWrapper = document.querySelector(".rooms-form-wrapper");

@@ -1,0 +1,67 @@
+.rooms-third-section{
+    padding: 30px 0;
+    background-color: aliceblue;
+}
+.rooms-third-section> p{
+    text-align: center;
+    padding: 10px 0;
+}
+.most-booked-wrapper{
+    width: 95%;
+    height: auto;
+    margin: 30px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+   
+}
+.most-booked-panels{
+    width: clamp(300px, 20vw, 400px);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    padding-bottom: 20px;
+    border-radius: 0.25em;
+}
+.most-booked-panels:hover{
+    cursor: pointer;
+}
+.most-booked-images{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+.most-booked-panels> div> img{
+    width: 100%;
+    height: 100%;
+}
+.most-booked-panels> div> img:hover{
+    transform: scale(1.2);
+    transform-origin: center;
+    transition: transform 0.5s ease;
+}
+.recommend-rooms{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 0 0;
+   
+}
+.recommend-rooms> h3,
+.star-rating{
+    font-size: clamp(1rem, 1.5vw, 1.7rem);
+    margin: 0;
+    padding: 0 10px;
+}
+.star-rating{
+    color: rgb(38, 89, 243);
+}
+.recommend-details{
+    padding-top: 30px;
+}
+.recommend-details> p{
+    padding: 0 10px;
+}
