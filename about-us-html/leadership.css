@@ -1,0 +1,112 @@
+
+.leaders-section{
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    z-index: 9;
+}
+@media only screen and (max-width: 540px){
+    .leaders-section{
+        padding: 30px 0;
+    }
+}
+.leaders-section> h1{
+    width: fit-content;
+    margin: 0 auto 15px auto;
+}
+.leaders-section> p{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+.leaders-wrapper{
+    width: 90%;
+    margin: 50px auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    padding-bottom: 50px;
+    position: relative;
+}
+.flip-cards{
+    display: flex;
+    position: relative;
+
+    width: clamp(250px, 20vw, 350px);
+    height: clamp(270px, 25vw, 370px);
+    perspective: 1000px; 
+    transform-style:preserve-3d; 
+    transition: transform 1s ease-in-out; 
+}
+.flipping-card{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+.card-front,
+.card-back{
+   
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+.card-back{
+    position:absolute;
+    transform:rotateY(180deg); 
+    
+    border-radius: 0.25em;
+    display: flex;
+    flex-direction: column;
+}
+.flip-cards:hover .flipping-card{
+  transform:rotateY(180deg); 
+}
+.leaders{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+.leaders> h3,
+.leaders> p{
+    color: rgb(237, 103, 14);
+    margin: 0;
+    font-weight: bolder;
+}
+.leaders> h3{
+    font-size: clamp(0.6rem 1vw, 1rem);
+}
+.card-front> img{
+    width: 100%;
+    height: 100%;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 0.25em;
+}
+.card-back> p{
+    width: 95%;
+    margin: 1em auto 0 auto;
+}
+.card-back-image-wrap{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    margin: auto auto 1em auto;
+    gap: 0.5em;
+}
+.card-back-image-wrap> img{
+    width: clamp(50px, 1.8vw, 100px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px rgb(237, 103, 14) solid;
+}
+.card-back-image-wrap> div> h3,
+.card-back-image-wrap> div> p{
+    margin: 0;
+}

@@ -1,0 +1,214 @@
+
+.timeline-section{
+    position: relative;
+}
+*{
+    box-sizing: border-box;
+}
+.timeline-images{
+    vertical-align: middle;
+    max-width: 100%;
+    display: inline-block;
+    border-radius: 0.25em;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+}
+.margin-bottom-heading> h3{
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin: 0;
+   /* background: #ff6a00;
+    background: -webkit-linear-gradient(
+        to right,
+        #ff6a00,
+        #ee0979
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+
+    width: fit-content;
+    display: flex;
+    justify-self: center;
+}
+.section-timeline-wrap{
+    z-index: 9;
+    position: relative;
+
+}
+.container-wrap{
+    width: 100vw;
+
+    margin-left: -150px;
+    margin-right: auto;
+}
+.margin-bottom{
+    margin-bottom: 32px;
+}
+.timeline-heading-wrapper> p{
+    letter-spacing: -0.02em;
+  
+}
+.section-timeline-head{
+    background-color: aliceblue;
+}
+.padding-vertical{
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 300px;
+    
+}
+.timeline-heading-wrapper{
+    color: #000000;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+}
+.timeline-component{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: relative;
+}
+.timeline-item{
+    z-index: 2;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 180px 1fr;
+    grid-auto-columns: 1fr;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: grid;
+    position: relative;
+    
+}
+
+.timeline-left{
+    text-align: right;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+.timeline-center{
+    justify-content: center;
+    display: flex;
+}
+.timeline-date{
+    color: #000000;
+    position: sticky;
+    top: 50vh;
+}
+.timeline-date> p{
+    font-size: clamp(30px, 3vw, 50px);
+    margin: 0;
+}
+.timeline-text{
+    color: #000000;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+.timeline-circle{
+    background-color: #000000;
+    border-radius: 100%;
+    width: 15px;
+    min-width: 15px;
+    max-width: 15px;
+    height: 15px;
+    min-height: 15px;
+    max-height: 15px;
+    position: sticky;
+    top: 50vh;
+    box-shadow: 0 0 0 8px aliceblue;
+}
+.timeline-progress{
+    z-index: 2;
+    background-color: #414141;
+    width: 3px;
+    height: 100%;
+    position: absolute;
+
+}
+.timeline-progress-bar{
+    z-index: 1;
+    background: #ff6a00;
+    background: -webkit-linear-gradient(
+        to bottom,
+        #ff6a00,
+        #ee0979
+    );
+    background: linear-gradient(
+        to bottom,
+        #ff6a00,
+        #ee0979
+    );
+    width: 3px;
+  
+    height: 50vh;
+    position: fixed;
+    inset: 0 auto 30vh;
+}
+.overlay-fade-top{
+    background-image: linear-gradient(#ffffff, #ffffff);
+    height: 72px;
+    position: absolute;
+    inset: 0% 0% auto;
+    z-index: 2;
+}
+.overlay-fade-bottom{
+    background-image: linear-gradient(to top, #ffffff, #ffffff);
+    height: 72px;
+    position: absolute;
+    inset: auto 0% 0%;
+    z-index: 2;
+}
+@media only screen and (max-width: 768px){
+    .container-wrap{
+        margin: 0 auto;
+        width: 95%;
+    }
+    .padding-vertical{
+        margin: 0;
+    }
+    .margin-bottom-heading{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .timeline-item{
+        grid-template-columns:  64px 1fr;
+        width: 100%;
+    }
+    .timeline-left{
+        text-align: left;
+        grid-area: 1 / 2 / 2/ 3;
+    }
+    .timeline-center{
+        justify-content: flex-start;
+        grid-area: 1 / 1 / 3 / 2;
+    }
+    .timeline-right{
+        grid-area: span 1 / span 1 / span 1 / span 1;
+    }
+    .timeline-date{
+        margin-bottom: 24px;
+        font-size: 36px;
+    }
+    .timeline-text{
+        font-size: 20px;
+    }
+    .timeline-progress{
+        left: 6px;
+    }
+}

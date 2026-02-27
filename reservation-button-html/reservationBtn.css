@@ -1,0 +1,88 @@
+
+.reserve-section{
+    background-color: white;
+    position: relative;
+    z-index: 9;
+    display: flex;
+    padding: 80px 30px;
+    overflow: hidden;
+     
+}
+.reserve-section::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: -1;
+}
+.reserve-section::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:  url("../images/index/firstSection/first\ section\ 1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter:blur(6px);
+    z-index: -1;
+}
+.reservation-descript-wrap{
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+.reservation-descript-wrap> h1,
+.reservation-descript-wrap> p{
+    color: #F5F1E8;
+    font-weight: 700;
+}
+
+.reservation-vutton-wrap{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about-reserve-button{
+    color: aliceblue;
+    padding: clamp(15px, 2vw, 40px) clamp(20px, 3vw, 80px);
+    font-size: clamp(1rem, 1.5vw, 3rem);
+    font-weight: bolder;
+    border: 2px solid aliceblue;
+    border-radius: 2em;
+    position: relative;
+}
+.about-reserve-button::after{
+    content: "";
+    position: absolute;
+    inset: 0; 
+    border: 2px solid #C6A75E;
+    border-radius: 2em;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.about-reserve-button:hover::after{
+    transform: scale(1.02);
+    opacity: 1;
+}
+.about-reserve-button:hover{
+    border: 2px solid transparent;
+    color: #C6A75E;
+}
+.reserve-section> div> h1{
+    margin: 0;
+    padding: 0;
+}
+@media only screen and (max-width: 540px){
+    .reserve-section{
+        flex-direction: column;
+        padding: 50px 0;
+        gap: 1em;
+    }
+    .reservation-descript-wrap{
+        width: 95%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
