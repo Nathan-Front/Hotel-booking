@@ -1,0 +1,84 @@
+
+.fourth-section{
+    position: relative;
+    overflow: hidden;
+}
+.fourth-section::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/index/gallery/bar.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter:blur(4px);
+    transform: scale(1.1);
+    z-index: -1;
+}
+.fourth-section>h2{
+    margin-bottom: 10px;
+    color: white;
+}
+.fourth-section> div{
+    position: relative;
+    overflow: hidden;
+    width: 95%;
+    margin: 0 auto;
+}
+.gallery-wrapper{
+    margin: 0 auto;
+    padding: 30px 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    transition: transform 0.4s ease-in-out;
+}
+.gallery-wrapper>li>img{
+    width: clamp(230px, 20vw, 400px);
+    height: clamp(150px, 20vw, 400px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);   
+}
+.slider-dots{
+    display: none;    
+}
+@media only screen and (max-width: 540px){
+    .slider-dots{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+    .slider-dots> button{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border-radius: 50%;
+    }
+    .slider-dots> button.galleryActive{
+        background-color: red;
+    }
+    .prev, .next{
+        display: none;
+    }
+}
+.prev, .next{
+    background-color: rgb(153, 221, 230);
+    color: rgb(0, 0, 0);
+    padding: 15px 8px;
+    border: none;
+    border-radius: 0.25em;
+    position: absolute;
+    top: 55%;
+    font-size: 1.3rem;
+}
+.prev{
+    left: 5px;
+}
+.next{
+    right: 5px;
+}
+.prev:hover, 
+.next:hover{
+    background-color: aliceblue;
+}

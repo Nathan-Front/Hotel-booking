@@ -1,63 +1,86 @@
 async function fetchNavbar(){
-  const res = await fetch("navigation.html");
-  const navHTML = await res.text();
-  const navContainer = document.querySelector("body");
-  navContainer.insertAdjacentHTML("afterbegin", navHTML);
-}
-
-async function fetchBottomSections() {
   const body = document.body;
 
-  //load footer
+  //Navigation
+  const res = await fetch("navigation.html");
+  const navHTML = await res.text();
+  body.insertAdjacentHTML("afterbegin", navHTML);
+
+  //footer
   const footerRes = await fetch("footer.html");
   const footerHTML = await footerRes.text();
   body.insertAdjacentHTML("beforeend", footerHTML);
 
-  //load alright
+  //alright
   const alrightRes = await fetch("alright.html");
   const alrightHTML = await alrightRes.text();
   body.insertAdjacentHTML("beforeend", alrightHTML);
 
   //If mobileviewport
-  if(window.innerWidth > 540) return;
-    const res = await fetch("mobileNavigation.html");
-    const mobileNavHTML = await res.text();
-    const container = document.querySelector("body");
-    container.insertAdjacentHTML("beforeend", mobileNavHTML);
+  if (window.innerWidth <= 540) {
+   const resMobile = await fetch("mobileNavigation.html");
+   const mobileNavHTML = await resMobile.text();
+   document.body.insertAdjacentHTML("beforeend", mobileNavHTML);
+  }
+}
+
+async function fetchIndexContent() {
+  const main = document.querySelector(".index-main-wrapper");
+
+  const resFirst = await fetch("./index-html/firstSection.html");
+  const firstSectionHTML = await resFirst.text();
+  main.insertAdjacentHTML("afterbegin", firstSectionHTML);
+  //Animate first section images
+  let firstSectionImages = document.querySelectorAll(".room-image");
+  let currentImageIndex = 0;
+  firstSectionImages[currentImageIndex].classList.add("active");
+  if (firstSectionImages.length === 0) return;
+  function firstSectionImagesAnimation() {
+    const current = firstSectionImages[currentImageIndex];
+    current.classList.remove("active");
+    current.classList.add("exit");
+    currentImageIndex = (currentImageIndex + 1) % firstSectionImages.length;
+    const next = firstSectionImages[currentImageIndex];
+    next.classList.remove("exit");
+    next.classList.add("active");
+    //Clean up old exit state
+    setTimeout(() => {
+      current.classList.remove("exit");
+    }, 600);
+  }
+  setInterval(firstSectionImagesAnimation, 7000);
+
+  const resSecond = await fetch("./index-html/secondSection.html");
+  const secondSectionHTML = await resSecond.text();
+  main.insertAdjacentHTML("beforeend", secondSectionHTML);
+
+  const resThird = await fetch("./index-html/thirdSection.html");
+  const thirdSectionHTML = await resThird.text();
+  main.insertAdjacentHTML("beforeend", thirdSectionHTML);
+
+  const resFourth = await fetch("./index-html/fourthSection.html");
+  const fourthSectionHTML = await resFourth.text();
+  main.insertAdjacentHTML("beforeend", fourthSectionHTML);
+
+  const resFifth = await fetch("./index-html/fifthSection.html");
+  const fifthSectionHTML = await resFifth.text();
+  main.insertAdjacentHTML("beforeend", fifthSectionHTML);
 }
 
 async function initAsync() {
   await fetchNavbar();
-  await fetchBottomSections();
+  await fetchIndexContent();
+  initialGalleryImage();
+  galleryDots();
+  prevNextButtons();
+  galleryMobileTouch();
+  updateGallery();
 }
-initAsync();
+document.addEventListener("DOMContentLoaded", initAsync);
 
-let firstSectionImages = document.querySelectorAll(".room-image");
-let currentImageIndex = 0;
 
-firstSectionImages[currentImageIndex].classList.add("active");
 
-function firstSectionImagesAnimation() {
-  const current = firstSectionImages[currentImageIndex];
-  current.classList.remove("active");
-  current.classList.add("exit");
 
-  currentImageIndex = (currentImageIndex + 1) % firstSectionImages.length;
-  const next = firstSectionImages[currentImageIndex];
-
-  next.classList.remove("exit");
-  next.classList.add("active");
-
-  // Clean up old exit state
-  setTimeout(() => {
-    current.classList.remove("exit");
-  }, 600);
-}
-
-setInterval(firstSectionImagesAnimation, 8000);
-
-const galleryWrapper = document.querySelector(".gallery-wrapper");
-const galleryImages = document.querySelectorAll(".gallery-image");
 let visibleGalleryImages;
 function initialGalleryImage(){
   if(window.innerWidth <= 540){
@@ -71,6 +94,8 @@ function initialGalleryImage(){
 initialGalleryImage();
 let currentIndex = 0; 
 function updateGallery(){
+  const galleryWrapper = document.querySelector(".gallery-wrapper");
+  const galleryImages = document.querySelectorAll(".gallery-image");
   if(!galleryWrapper) return;
   const container = document.querySelector(".gallery-main-wrapper");
   const maxTranslate = galleryWrapper.scrollWidth - container.clientWidth;
@@ -90,6 +115,8 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
   updateGallery();
   initialGalleryImage();
+    const galleryWrapper = document.querySelector(".gallery-wrapper");
+  const galleryImages = document.querySelectorAll(".gallery-image");
   const maxIndex = galleryImages.length - visibleGalleryImages;
   if(currentIndex > maxIndex){
     currentIndex = maxIndex;
@@ -101,7 +128,10 @@ window.addEventListener("resize", () => {
 function prevNextButtons(){
   const prevBtn = document.querySelector(".prev");
   const nextBtn = document.querySelector(".next");
-  if(!prevBtn || !nextBtn) return;
+  const galleryImages = document.querySelectorAll(".gallery-image");
+
+  if(!prevBtn || !nextBtn || galleryImages.length === 0) return;
+
   const galleryMaxIndex = galleryImages.length - visibleGalleryImages;
 
   nextBtn.addEventListener("click", () => {
@@ -122,9 +152,12 @@ function prevNextButtons(){
     updateGallery();
   });
 }
-prevNextButtons();
+
 
 function getGalleryWrapperWidth(){
+  const galleryWrapper = document.querySelector(".gallery-wrapper");
+  const galleryImages = document.querySelectorAll(".gallery-image");
+  if (galleryImages.length === 0) return;
   const gallerMainWrapper = document.querySelector(".gallery-main-wrapper");
   const viewportWidth = Array.from(galleryImages);
   if(!galleryWrapper || !galleryImages || !viewportWidth) return null;
@@ -144,12 +177,13 @@ function getGalleryWrapperWidth(){
   return {fullWidth, perSlideWidth, wrapperWidth};
 }
 
-const galleryDot = document.querySelector(".slider-dots");
 function galleryDots(){
-  if(!galleryDot) return;
-  galleryDots.innerHTML = "";
+  const galleryDot = document.querySelector(".slider-dots");
+  const galleryImages = document.querySelectorAll(".gallery-image");
+  if(!galleryDot || galleryImages.length === 0) return;
+  galleryDot.innerHTML = "";
   const totalDots = galleryImages.length - visibleGalleryImages + 1;
-  for(let i = 0; i < galleryImages.length ; i++){
+  for(let i = 0; i < totalDots ; i++){
     const dot = document.createElement("button");
     dot.addEventListener("click", () =>{
       if(window.innerWidth > 540) return;
@@ -160,13 +194,14 @@ function galleryDots(){
   }
   updateGalleryDots();
 }
-document.addEventListener("DOMContentLoaded", galleryDots);
+
 
 function updateGalleryDots(){
+  const galleryDot = document.querySelector(".slider-dots");
+  if (!galleryDot) return;
   const dots = galleryDot.querySelectorAll("button");
-  if(!dots) return;
-  dots.forEach((dot, gallery) => {
-    dot.classList.toggle("galleryActive", gallery === currentIndex);
+  dots.forEach((dot, index) => {
+    dot.classList.toggle("galleryActive", index === currentIndex);
   });
 }
 window.addEventListener("load", ()=>{
@@ -181,7 +216,10 @@ function galleryMobileTouch(){
   let startX = 0;
   let isDragging = false;
   let currentTranslate = 0;
-  const {fullWidth, perSlideWidth, wrapperWidth} = getGalleryWrapperWidth();
+  const sizes = getGalleryWrapperWidth();
+  if (!sizes) return;
+
+  const { fullWidth, perSlideWidth, wrapperWidth } = sizes;
   if(!galleryContainer || !gallerySlide || !fullWidth || !perSlideWidth || !wrapperWidth) return;
 
   function updateGallerySlides(){
@@ -226,7 +264,7 @@ function galleryMobileTouch(){
     updateGalleryDots();
   });
 }
-window.addEventListener("resize", galleryMobileTouch);
-document.addEventListener("DOMContentLoaded", galleryMobileTouch);
+
+
 
 

@@ -1,0 +1,93 @@
+
+.second-section{
+    background-color: aliceblue;
+    padding-bottom: 30px;
+}
+.section-titles{
+    text-align: center;
+    padding: 50px 0 0 0;
+    margin: 0;
+    font-size: clamp(1.5rem, 2.8vw, 3rem);
+}
+.second-section> p{
+    text-align: center;
+    margin: 0;
+    padding: 0 0 30px 0;
+}
+.index-room-wrapper{
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+.index-room-panels{
+    width: clamp(350px, 28vw, 450px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+.index-room-images{
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+.index-room-images>img{
+    width: 100%;
+    height: 100%;
+}
+.index-room-images>img:hover{
+    transform: scale(1.2);
+    transform-origin: center;
+    transition: transform 0.5s ease;
+}
+.index-room-panels> h3{
+    font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+    margin: 0;
+    padding: 30px 0 10px 0;
+    text-align: center;
+}
+.index-room-panels> p{
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+    text-align: center;
+    color: rgb(64, 68, 71);
+}
+.third-section{
+    display: flex;
+    padding: 50px 0 30px 0;
+    width: 90%;
+    margin: 0 auto;
+    gap: 1em;
+}
+.index-about-us{
+    display: flex;
+    flex-direction: column;   
+}
+.index-about-us{
+    width: clamp(300px 20vw, 500px);
+}
+.index-about-us> h2{
+    text-align: left;
+    padding: 0;
+}
+.index-about-us> p{
+    line-height: 1.5;
+}
+.to-about-us-button{
+    font-size: clamp(0.9rem, 1.8vw, 2.5rem);
+    width: fit-content;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 0.25em;
+    background-color: black;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+.to-about-us-button:hover{
+    background-color: rgb(64, 68, 71);
+}

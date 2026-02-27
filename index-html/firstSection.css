@@ -1,0 +1,71 @@
+.first-section{
+    height: clamp(350px, 50vw, 600px);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.first-section-images-wrapper{
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+}
+/* li must fill the section */
+.first-section-images-wrapper> li {
+  position: absolute;
+  inset: 0;
+}
+/* images */
+.room-image {
+ 
+  width: 100%;
+  height: clamp(350px, 50vw, 600px);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease, opacity 1s ease;
+}
+/* active image */
+.room-image.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* exiting image */
+.room-image.exit {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.first-section-content{
+    position: relative;
+    z-index: 2;
+    color: white;
+    width: clamp(20rem, 50vw, 30rem);
+    left: 50px;
+    top: 100px;
+}
+.first-section-content>h1{
+    font-size: clamp(1.5rem, 3vw, 3.5rem);
+    color:rgb(255, 255, 255);
+    text-shadow:  0 0 5px rgb(0, 0, 0),
+    0 0 10px rgb(0, 0, 0),
+    0 0 20px rgb(0, 0, 0);
+}
+.first-section-content>p{
+    font-size: clamp(0.9rem, 2vw, 2.5rem);
+    text-shadow:  0 0 5px rgb(0, 0, 0),
+    0 0 10px rgb(0, 0, 0),
+    0 0 20px rgb(0, 0, 0);
+}
+.book-button{
+    font-size: clamp(0.9rem, 2vw, 2.5rem);
+    padding: 5px 20px;
+    border: none;
+    background-color: rgb(153, 221, 230);
+    color: rgb(31, 52, 55);
+    border-radius: 0.25em;
+    box-shadow: 5px 5px 5px;
+}
+.book-button:hover{
+    background-color: white;
+    transition: 0.3s ease-in;
+}

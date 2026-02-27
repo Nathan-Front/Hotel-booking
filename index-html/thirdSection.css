@@ -1,0 +1,12 @@
+.third-section> img{
+    width: clamp(300px, 50vw, 800px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+@media only screen and (max-width: 768px){
+    .third-section{
+        flex-direction: column;
+    }
+    .third-section> img{
+        margin: 0 auto;
+    }
+}
