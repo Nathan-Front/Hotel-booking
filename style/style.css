@@ -40,7 +40,7 @@ p{
     z-index: 9;
 }
 .hotel-logo{
-    width: clamp(4em, 8vw, 7em);
+    width: clamp(2.5em, 8vw, 7em);
     margin: 0 0 0 clamp(2em, 8vw, 10em);
 }
 .navigation-links{
@@ -98,21 +98,25 @@ p{
         position: fixed;
         bottom: 0;
         left: 0;
-        background-color: rgb(70, 185, 189);
+        background-color: aliceblue;
         z-index: 999;
     }
     .mobile-nav-link> img{
-        width: clamp(40px, 9vw, 70px);
-        height: clamp(40px, 9vw, 70px);
+        width: clamp(30px, 8vw, 70px);
+        aspect-ratio: 1 / 1;
     }
     .mobile-navigation-links> li:nth-child(2)> a> img{
-        width: clamp(35px, 7.9vw, 60px);
-        height: clamp(35px, 7.9vw, 60px);
+        width: clamp(20px, 6.8vw, 60px);
+        aspect-ratio: 1 / 1;
     }
     .mobile-navigation-links> li:nth-child(3)> a> img{
-        width: clamp(38px, 9.5vw, 60px);
-        height: clamp(38px, 9.5vw, 60px);
+        width: clamp(20px, 8vw, 60px);
+        aspect-ratio: 1 / 1;
     }
+     .mobile-navigation-links> li:last-child{
+        width: fit-content;
+        aspect-ratio: 1 / 1;
+     }
 }
 .first-section-images-wrapper{
   position: absolute;
