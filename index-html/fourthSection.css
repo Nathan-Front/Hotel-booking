@@ -50,13 +50,13 @@
     }
     .slider-dots> button{
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         background-color: white;
         border-radius: 50%;
     }
     .slider-dots> button.galleryActive{
-        background-color: red;
+        background-color: rgb(227, 146, 32);
     }
     .prev, .next{
         display: none;

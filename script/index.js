@@ -75,6 +75,7 @@ async function initAsync() {
   prevNextButtons();
   galleryMobileTouch();
   updateGallery();
+  updateGalleryDots();
 }
 document.addEventListener("DOMContentLoaded", initAsync);
 
@@ -182,7 +183,7 @@ function galleryDots(){
   const galleryImages = document.querySelectorAll(".gallery-image");
   if(!galleryDot || galleryImages.length === 0) return;
   galleryDot.innerHTML = "";
-  const totalDots = galleryImages.length - visibleGalleryImages + 1;
+  const totalDots = galleryImages.length - visibleGalleryImages + 2;
   for(let i = 0; i < totalDots ; i++){
     const dot = document.createElement("button");
     dot.addEventListener("click", () =>{
@@ -204,10 +205,7 @@ function updateGalleryDots(){
     dot.classList.toggle("galleryActive", index === currentIndex);
   });
 }
-window.addEventListener("load", ()=>{
-  if(!galleryDot) return;
-  updateGalleryDots();
-});
+
 
 function galleryMobileTouch(){
   const galleryContainer = document.querySelector(".gallery-wrapper");
@@ -222,24 +220,20 @@ function galleryMobileTouch(){
   const { fullWidth, perSlideWidth, wrapperWidth } = sizes;
   if(!galleryContainer || !gallerySlide || !fullWidth || !perSlideWidth || !wrapperWidth) return;
 
-  function updateGallerySlides(){
-    //const centerOffSet = (wrapperWidth - perSlideWidth) / 2;
-   // const translateX = -index * fullWidth + centerOffSet;
-    //currentTranslate = translateX;
-    if(!galleryWrapper) return;
+function updateGallerySlides(){
+  const container = document.querySelector(".gallery-main-wrapper");
+  if(!container) return;
 
-    const container = document.querySelector(".gallery-main-wrapper");
-    const {fullWidth, perSlideWidth, wrapperWidth} = getGalleryWrapperWidth();
-    if(!fullWidth || !perSlideWidth || !wrapperWidth) return;
-    const centerOffset = (wrapperWidth - perSlideWidth) / 2;
-    let translate = currentIndex * fullWidth - centerOffset;
-    const maxTranslate = galleryWrapper.scrollWidth - container.clientWidth;
+  const centerOffset = (wrapperWidth - perSlideWidth) / 2;
+  let translate = currentIndex * fullWidth - centerOffset;
 
-    if (translate < 0) translate = 0;
-    if (translate > maxTranslate) translate = maxTranslate;
+  const maxTranslate = galleryContainer.scrollWidth - container.clientWidth;
 
-    galleryContainer.style.transform = `translateX(-${translate}px)`;
-  }
+  if (translate < 0) translate = 0;
+  if (translate > maxTranslate) translate = maxTranslate;
+
+  galleryContainer.style.transform = `translateX(-${translate}px)`;
+}
   galleryContainer.addEventListener("touchstart", (e) =>{
     startX = e.touches[0].clientX;
     isDragging = true;},

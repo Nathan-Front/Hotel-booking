@@ -1,12 +1,12 @@
 
 .fifth-section{
-    padding-bottom: 30px;
+    padding-bottom: 80px;
     background-color: aliceblue;
 }
 .form-map-wrapper{
     display: flex;
     justify-content: center;
-    gap: 1em;
+    gap: 5em;
     margin-top: 30px;
 }
 .form-map-wrapper> form{
@@ -19,6 +19,7 @@
     padding: 10px 5px;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 0.25em;
 }
 .form-map-wrapper> form> textarea{
     padding: 10px 5px;
@@ -45,8 +46,12 @@ iframe{
     border-radius: 16px;
 }
 @media only screen and (max-width: 540px){
+    .fifth-section{
+        padding-bottom: 30px;
+    }
     .form-map-wrapper{
         flex-direction: column;
+        gap: 1.5em;
     }
     .form-map-wrapper> form{
         gap: 1em;

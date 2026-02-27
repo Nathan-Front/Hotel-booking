@@ -1,7 +1,7 @@
 
 .second-section{
     background-color: aliceblue;
-    padding-bottom: 30px;
+    padding-bottom: 80px;
 }
 .section-titles{
     text-align: center;
@@ -29,6 +29,7 @@
     background-color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
     overflow: hidden;
+    border-radius: 0.25em;
 }
 .index-room-images{
     width: 100%;
@@ -90,4 +91,9 @@
 }
 .to-about-us-button:hover{
     background-color: rgb(64, 68, 71);
+}
+@media only screen and (max-width: 540px){
+    .second-section{
+        padding-bottom: 40px;
+    }
 }

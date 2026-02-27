@@ -20,6 +20,9 @@ async function fetchRoomsPrice(){
 }
 async function initAsync() {
   await fetchRoomsPrice();
+  reservationInputDisplay();
+  accordionFAQ();
+  getReservationCount();
 }
 document.addEventListener("DOMContentLoaded", initAsync);
 
@@ -42,7 +45,7 @@ function reservationInputDisplay(){
     }
   });
 }
-reservationInputDisplay();
+
 
 
 function accordionFAQ(){
@@ -69,7 +72,7 @@ function accordionFAQ(){
     });
   });
 }
-accordionFAQ();
+
 
 function getReservationCount(){
   const counterWrapper = document.querySelector(".reserve-info-wrapper");
@@ -103,4 +106,4 @@ function getReservationCount(){
     });
   });
 }
-getReservationCount();
+
