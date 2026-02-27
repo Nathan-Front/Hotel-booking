@@ -99,6 +99,7 @@ p{
         bottom: 0;
         left: 0;
         background-color: rgb(70, 185, 189);
+        z-index: 999;
     }
     .mobile-nav-link> img{
         width: clamp(40px, 9vw, 70px);
