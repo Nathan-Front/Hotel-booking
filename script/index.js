@@ -26,8 +26,8 @@ async function fetchNavbar(){
 
 async function fetchIndexContent() {
   const main = document.querySelector(".index-main-wrapper");
-
-  const resFirst = await fetch("./index-html/firstSection.html");
+  if (!main) return;
+  const resFirst = await fetch("../index-html/firstSection.html");
   const firstSectionHTML = await resFirst.text();
   main.insertAdjacentHTML("afterbegin", firstSectionHTML);
   //Animate first section images

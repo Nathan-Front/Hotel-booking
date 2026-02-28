@@ -102,9 +102,53 @@ p, button{
 .reserve-info-wrapper-active> div> label{
     margin-right: 5px;
 }
-@media only screen and (max-width: 540px){
+@media only screen and (max-width: 330px){
+    .rooms-form-wrapper{
+        width: 85vw;
+        margin: 80px auto 0 auto;
+    }
+    .user-reserve-info-wrapper::after{
+        content: "";
+    }
+    .check-in-out-wrapper,
+    .user-reserve-info-wrapper{
+        width: 70vw;
+        padding: 15px 20px;
+    }
+    .check-available-button{
+        width: 82vw;
+        padding: 15px 20px;
+    }
+    .check-in-out-wrapper> div{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
     .reserve-info-wrapper-active{
-        right: -20%;
+        right: -10%;
+    }
+}
+@media (min-width: 331px) and (max-width: 540px){
+    .rooms-form-wrapper{
+        width: 70vw;
+        margin: 100px auto 0 auto;
+    }
+    .check-in-out-wrapper,
+    .user-reserve-info-wrapper{
+        width: 60vw;
+        padding: 15px 20px;
+    }
+    .check-available-button{
+        width: 70vw;
+        padding: 15px 20px;
+    }
+    .check-in-out-wrapper> div{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .reserve-info-wrapper-active{
+        right: -10%;
     }
 }
 .labels{

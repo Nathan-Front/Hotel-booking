@@ -36,6 +36,11 @@ h4{
     border-radius: 0.25em;
     background-color: white;
 }
+@media only screen and (max-width: 540px){
+    .reserve-section{
+        width: 98%;
+    }
+}
 .reserve-section> h3{
     margin: 10px 0 0 10px;
     color: blue;
@@ -121,7 +126,6 @@ h4{
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        height: 660px;
     }
     .section-sub-wrapper.show-other-rooms{
         display: flex;
@@ -156,6 +160,7 @@ h4{
 @media only screen and (max-width: 540px){
     .room-right-panel{
         margin: 0 auto;
+        border-radius: unset;
     }
 }
 .first-room-right-panel{
@@ -166,6 +171,14 @@ h4{
     background-color: rgb(222, 222, 222);
     border-bottom: 1px rgb(196, 194, 194) solid;
     padding: 8px 10px;
+}
+@media only screen and (max-width: 540px){
+    .first-room-right-panel{
+        padding: 5px 0;
+    }
+    .first-room-right-panel> h4{
+        margin: 0;
+    }
 }
 .first-room-right-panel>h4:first-child,
 .first-room-right-panel>h4:last-child{
@@ -275,7 +288,7 @@ h4{
     background-color: rgb(255, 228, 228);
     padding: 2px 3px;
     border-radius: 0.25em;
-    
+    font-size: clamp(0.7rem, 1vw, 1.5rem);
 }
 .special-price> span{
     margin-left: 5px;
@@ -283,6 +296,13 @@ h4{
     background-color: rgb(255, 78, 78);
     color: white;
     border-radius: 0.25em;
+    font-size: clamp(0.7rem, 1vw, 1.5rem);
+}
+@media only screen and (max-width: 540px){
+    .special-price> p,
+    .special-price> span{
+        text-align: center;
+    }
 }
 .price-main-wrapper> button{
     background-color: rgb(68, 68, 221);

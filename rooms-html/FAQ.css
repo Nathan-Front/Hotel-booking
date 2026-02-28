@@ -20,7 +20,7 @@
     gap: 0.25em;
 }
 .faq-panels{
-    width: clamp(400px, 45vw, 800px);
+    width: clamp(350px, 45vw, 800px);
     border: 0.5px gray solid;
     border-radius: 0.25em;
 }
@@ -52,4 +52,17 @@
 }
 .faq-item.active .faq-answer {
     display: block;
+}
+@media only screen and (max-width: 330px){
+    .faq-panels{
+        width: clamp(300px, 45vw, 800px);
+    }
+}
+@media only screen and (max-width: 540px){
+    .rooms-fourth-section> div{
+        gap: 0.25em;
+    }
+    .faq-question::after{
+        display: none;
+    }
 }

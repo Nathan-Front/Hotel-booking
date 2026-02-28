@@ -101,25 +101,20 @@ h2{
         position: fixed;
         bottom: 0;
         left: 0;
-        background-color: aliceblue;
+        background-color:  white;
         z-index: 999;
     }
+    .mobile-nav-link{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+    }
     .mobile-nav-link> img{
-        width: clamp(30px, 8vw, 70px);
+        width: clamp(25px, 1vw, 70px);
         aspect-ratio: 1 / 1;
     }
-    .mobile-navigation-links> li:nth-child(2)> a> img{
-        width: clamp(20px, 6.8vw, 60px);
-        aspect-ratio: 1 / 1;
-    }
-    .mobile-navigation-links> li:nth-child(3)> a> img{
-        width: clamp(20px, 8vw, 60px);
-        aspect-ratio: 1 / 1;
-    }
-     .mobile-navigation-links> li:last-child{
-        width: fit-content;
-        aspect-ratio: 1 / 1;
-     }
 }
 
 footer{ 
