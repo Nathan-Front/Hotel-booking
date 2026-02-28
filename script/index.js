@@ -30,25 +30,6 @@ async function fetchIndexContent() {
   const resFirst = await fetch("../index-html/firstSection.html");
   const firstSectionHTML = await resFirst.text();
   main.insertAdjacentHTML("afterbegin", firstSectionHTML);
-  //Animate first section images
-  let firstSectionImages = document.querySelectorAll(".room-image");
-  let currentImageIndex = 0;
-  firstSectionImages[currentImageIndex].classList.add("active");
-  if (firstSectionImages.length === 0) return;
-  function firstSectionImagesAnimation() {
-    const current = firstSectionImages[currentImageIndex];
-    current.classList.remove("active");
-    current.classList.add("exit");
-    currentImageIndex = (currentImageIndex + 1) % firstSectionImages.length;
-    const next = firstSectionImages[currentImageIndex];
-    next.classList.remove("exit");
-    next.classList.add("active");
-    //Clean up old exit state
-    setTimeout(() => {
-      current.classList.remove("exit");
-    }, 600);
-  }
-  setInterval(firstSectionImagesAnimation, 7000);
 
   const resSecond = await fetch("./index-html/secondSection.html");
   const secondSectionHTML = await resSecond.text();
@@ -70,17 +51,68 @@ async function fetchIndexContent() {
 async function initAsync() {
   await fetchNavbar();
   await fetchIndexContent();
+  animateFirstSectionImage();
+  goToReservationHtml();
+  goToAboutHtml();
   initialGalleryImage();
   galleryDots();
   prevNextButtons();
   galleryMobileTouch();
   updateGallery();
   updateGalleryDots();
+  submitForm();
+  subscribeToNewsletter();
 }
 document.addEventListener("DOMContentLoaded", initAsync);
 
+function animateFirstSectionImage(){
+  //Animate first section images
+  let firstSectionImages = document.querySelectorAll(".room-image");
+  let currentImageIndex = 0;
+  firstSectionImages[currentImageIndex].classList.add("active");
+  if (firstSectionImages.length === 0) return;
+  function firstSectionImagesAnimation() {
+    const current = firstSectionImages[currentImageIndex];
+    current.classList.remove("active");
+    current.classList.add("exit");
+    currentImageIndex = (currentImageIndex + 1) % firstSectionImages.length;
+    const next = firstSectionImages[currentImageIndex];
+    next.classList.remove("exit");
+    next.classList.add("active");
+    //Clean up old exit state
+    setTimeout(() => {
+      current.classList.remove("exit");
+    }, 600);
+  }
+  setInterval(firstSectionImagesAnimation, 5000);
+}
 
+function goToReservationHtml(){
+  const reservationBtn = document.querySelector(".book-button");
+  reservationBtn.addEventListener("click", () => {
+    window.location.href = "reserve.html";
+  });
+}
+function goToAboutHtml(){
+  const aboutBtn = document.querySelector(".to-about-us-button");
+  aboutBtn.addEventListener("click", () => {
+    window.location.href = "about.html";
+  });
+}
 
+function submitForm(){
+  const form = document.querySelector("#message-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.querySelector("input[name='Iname']").value;
+    const email = form.querySelector("input[name='Iemail']").value;
+    const tel = form.querySelector("input[name='Itel']").value;
+    const message = form.querySelector("textarea[name='message']").value;
+    alert("Form submitted successfully!");
+    localStorage.setItem("messageForm", JSON.stringify({ name, email, tel, message }));
+    form.reset();
+  });
+}
 
 let visibleGalleryImages;
 function initialGalleryImage(){
