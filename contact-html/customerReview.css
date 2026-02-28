@@ -1,0 +1,109 @@
+
+.customer-review-section{
+    padding: 50px 0;
+    background-color: aliceblue;
+}
+.review-carousel-main-wrap{
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 30px 0;
+    position: relative;
+
+
+}
+.review-carousel-wrapper{
+    display: flex;  
+    gap: 1.5rem;
+    transition: transform 0.4s ease;
+
+    
+}
+.review-carousel-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    
+    flex: 0 0 calc((100% - 3rem) / 3);/* 3rem = 2 gaps between 3 visible slides */
+ 
+}
+@media only screen and (max-width:599px) {
+     .review-carousel-items {
+        flex: 0 0 100%;
+        flex: 0 0 calc((100%));
+        
+    }
+}
+@media (min-width: 600px) and (max-width:768px) {
+     .review-carousel-items {
+        flex: 0 0 100%;
+        flex: 0 0 calc((100% - 1.5rem) / 2);
+    }
+}
+
+.review-carousel-items> div> img{
+    width: clamp(20px, 25%, 100px);
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 2px salmon solid;
+}
+.review-carousel-items> div> p{
+    margin: 0 auto;
+    width: 95%;
+}
+.review-carousel-items> div> h4{
+    margin: 30px 0;
+    font-weight: bolder;
+    font-size: clamp(1.2rem, 1.5vw, 1.7rem);
+}
+.review-carousel-items> div:nth-child(2){
+    flex: 1;
+}
+.prevRev,
+.nextRev{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    font-size: clamp(20px, 5vw, 80px);
+    background-color: transparent;
+    border: none;
+}
+.prevRev{
+    left: 5px;
+}
+.nextRev{
+    right: 5px;
+}
+.prevRev:hover,
+.nextRev:hover{
+    color: rgb(227, 146, 32);
+}
+.review-dots{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;    
+}
+.review-dots> button{
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+    border-radius: 0.25em;
+    border: 2px gray solid;
+}
+.review-dots> button.review-Active{
+    background-color: rgb(227, 146, 32);
+}
+@media only screen and (max-width: 599px){
+    .prevRev,
+    .nextRev{
+        display: none;
+    }
+    .review-dots> button{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+}

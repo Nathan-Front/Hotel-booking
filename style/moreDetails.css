@@ -5,7 +5,7 @@ body.no-scroll {
 .lock-wrapper{
     display: block;
     position: fixed;
-    z-index: 1;
+    z-index: 99;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
