@@ -14,16 +14,7 @@ async function fetchContactInfo(){
     const reserveHTML = await resReserve.text();
     main.insertAdjacentHTML("beforeend", reserveHTML);
 }
-async function initAsync() {
-    await fetchContactInfo();
-    initializeReviewCarousel();
-    prevNextReview();
-    updateReviewCarousel();
-    reviewDots();
-    updateReviewDots();
-    enableTouchSwipe();
-}
-document.addEventListener("DOMContentLoaded", initAsync);
+
 
 let vissibleReview = 0;
 function initializeReviewCarousel(){
@@ -180,3 +171,13 @@ function enableTouchSwipe() {
         updateReviewCarousel();
     });
 }
+async function initAsync() {
+    await fetchContactInfo();
+    initializeReviewCarousel();
+    prevNextReview();
+    updateReviewCarousel();
+    reviewDots();
+    updateReviewDots();
+    enableTouchSwipe();
+}
+document.addEventListener("DOMContentLoaded", initAsync);

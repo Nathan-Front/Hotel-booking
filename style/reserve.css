@@ -95,13 +95,11 @@ h4{
     width: clamp(80px, 7.5vw, 125px);
     height: 100%;
     grid-column: 1 / 2;
-   
 }
 .left-panel-images>img:last-child{
     width: clamp(80px, 7.5vw, 125px);
-   height: 100%;
+    height: 100%;
     grid-column: 2 / 3;
-    
 }
 .left-panel-descript{
     display: flex;
@@ -117,12 +115,17 @@ h4{
 .left-panel-descript> li> img{
     width: clamp(15px, 1.5vw, 30px);
 }
-.left-panel-descript> li> button{
+.more-button{
+    padding: 3px 10px;
     background-color: rgb(68, 68, 221);
     border: none;
     border-radius: 0.25em;
     color: white;
-    box-shadow: 4px 4px 5px rgba(23, 23, 23, 0.4);
+}
+.more-button:hover{
+    background-color: #174fc4;  
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 @media only screen and (max-width: 540px){
     .reserve-first-section{
@@ -310,13 +313,6 @@ h4{
         text-align: center;
     }
 }
-.price-main-wrapper> button{
-    background-color: rgb(68, 68, 221);
-    border: none;
-    border-radius: 0.25em;
-    color: white;
-    box-shadow: 4px 4px 5px rgba(23, 23, 23, 0.4);
-}
 .room-price{
     display: flex;
 }
@@ -330,11 +326,19 @@ h4{
     font-weight: bolder;
     font-size: clamp(1.1rem, 2vw, 1.8rem);
 }
-.price-main-wrapper> button{
+.reserve-room-button{
     width: fit-content;
     padding: 5px 15px;
     margin-top: 10px;
-    
+    background-color: rgb(68, 68, 221);
+    border: none;
+    border-radius: 0.25em;
+    color: white;  
+}
+.reserve-room-button:hover{
+    background-color: #174fc4;  
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 .third-room-right-panel{
     grid-column: 1 / 4;

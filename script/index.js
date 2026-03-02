@@ -48,22 +48,6 @@ async function fetchIndexContent() {
   main.insertAdjacentHTML("beforeend", fifthSectionHTML);
 }
 
-async function initAsync() {
-  await fetchNavbar();
-  await fetchIndexContent();
-  animateFirstSectionImage();
-  goToReservationHtml();
-  goToAboutHtml();
-  initialGalleryImage();
-  galleryDots();
-  prevNextButtons();
-  galleryMobileTouch();
-  updateGallery();
-  updateGalleryDots();
-  submitForm();
-  subscribeToNewsletter();
-}
-document.addEventListener("DOMContentLoaded", initAsync);
 
 function animateFirstSectionImage(){
   //Animate first section images
@@ -311,5 +295,22 @@ function subscribeToNewsletter(){
     });
 }
 
+
+async function initAsync() {
+  await fetchNavbar();
+  await fetchIndexContent();
+  animateFirstSectionImage();
+  goToReservationHtml();
+  goToAboutHtml();
+  initialGalleryImage();
+  galleryDots();
+  prevNextButtons();
+  galleryMobileTouch();
+  updateGallery();
+  updateGalleryDots();
+  submitForm();
+  subscribeToNewsletter();
+}
+document.addEventListener("DOMContentLoaded", initAsync);
 
 

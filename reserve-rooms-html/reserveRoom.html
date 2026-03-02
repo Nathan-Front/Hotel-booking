@@ -1,4 +1,4 @@
-<section class="reserveRoom-html">
+<section class="reserveRoom-html" id="reserveRoom-wrapper">
   <form action="" class="form-section">
     <div class="input-label-wrap">
       <label for="firstName">First Name:</label>
@@ -91,11 +91,12 @@
       <img
         src="../images/rooms/secondSection/family-room.jpeg"
         alt="reserved room image"
+        id="reserve-image"
       />
       <h2 class="selected-room-type">Room Selected</h2>
     </div>
     <div class="date-selection-wrapper">
-      <h4 class="reserved-date">Date <span>00/00/00</span></h4>
+      <h4 class="reservation-date">Reservation Date: <span>00/00/00</span></h4>
       <p class="checkin-time">checkin: 15:00</p>
       <p class="checkout-time">checkout: before 11:00</p>
       <div class="select-date-room-container">
@@ -114,14 +115,19 @@
     <div class="payment-summary-wrap">
       <h3>Payment Summary</h3>
       <div>
-        <p><span>0</span>Room X <span>0</span>Night</p>
-        <p>Price before discounts: $<span>0</span></p>
-        <p>Special discounts: $<span>0</span></p>
+        <p>
+          <span class="room-count">0</span> Room(s)
+          <span class="night-count">0</span> Night(s)
+        </p>
+        <p class="price-before-discounts">
+          Price before discounts: <span>0</span>
+        </p>
+        <p class="special-discounts">Special discounts: <span>0</span></p>
       </div>
       <div>
         <p>Tax & Fees</p>
-        <p>Vat: $<span>0</span></p>
-        <p>Service charge: $<span>0</span></p>
+        <p>Vat: <span>12%</span></p>
+        <p>Service charge: <span>10%</span></p>
       </div>
       <div>
         <h3>Total: $<span>0</span></h3>

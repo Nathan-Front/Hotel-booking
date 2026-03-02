@@ -85,26 +85,6 @@ function displayMoreDetails(){
     });
  }
 }
-async function initAsync() {
- const savedRoom = localStorage.getItem("selectedRoom");
-  if (savedRoom) {
-    const roomContainer = document.querySelector(".rooms-container");
-    const resReserve = await fetch("reserve-rooms-html/reserveRoom.html");
-    const reserveHTML = await resReserve.text();
-    roomContainer.innerHTML = reserveHTML;
-    flatpickr("#dateRange", {
-      mode: "range",
-      dateFormat: "Y-m-d"
-    });
-  } else {
-    await fetchRooms();
-    displayMoreDetails();
-    reserveRoom();
-  }
-  scrollHash();
-  cancelReservation();
-}
-document.addEventListener("DOMContentLoaded", initAsync);
 
 function displayOtherRooms(){
     const showMore = document.querySelectorAll(".more-rooms");
@@ -150,25 +130,111 @@ function scrollHash(){
 }
 window.addEventListener("load", scrollHash);
 
-//This needs to be global to be able to access it
+
+async function displayReserveRoomPage(roomData){
+    const roomContainer = document.querySelector(".rooms-container");
+    roomContainer.innerHTML = await loadHTML("reserve-rooms-html/reserveRoom.html");
+    populateReservation(roomData);
+    datePicker();
+    roomPicker();
+}
+
 function reserveRoom(){
     const reserveBtn = document.querySelectorAll(".reserve-room-button");
-    reserveBtn.forEach(btn =>{
-        btn.addEventListener("click", async ()=>{
-            const wrapper = btn.closest(".reserve-section");
-            const roomType = wrapper.querySelector("h3").textContent;
-           
-            localStorage.setItem("selectedRoom", roomType);
-            const roomContainer = document.querySelector(".rooms-container");
+    reserveBtn.forEach(btn => {
+    btn.addEventListener("click", async () => {
+        const wrapper = btn.closest(".reserve-section");
+        const roomType = wrapper.querySelector("h3").textContent;
+        const roomImage = wrapper.querySelector(".main-picture").src;
+        const today = new Date().toISOString().split("T")[0];
+        const originalPrice = wrapper.querySelector(".original-price").textContent;
+        const percentOff = btn.closest(".price-main-wrapper")?.querySelector(".percent-off")?.textContent || "0%";
 
-            const resReserve = await fetch("reserve-rooms-html/reserveRoom.html");
-            const reserveHTML = await resReserve.text();
-            roomContainer.innerHTML = reserveHTML;
-            flatpickr("#dateRange", {
-                mode: "range",
-                dateFormat: "Y-m-d"
-            });
+        localStorage.setItem("selectedRoom", JSON.stringify({
+            type: roomType,
+            image: roomImage,
+            date: today,
+            price: originalPrice,
+            discount: percentOff
+        }));
+        await displayReserveRoomPage({
+            type: roomType,
+            image: roomImage,
+            date: today,
+            price: originalPrice,
+            discount: percentOff
         });
+
+    });
+});
+}
+
+async function loadHTML(path) {
+    const res = await fetch(path);
+    return await res.text();
+}
+function populateReservation(data){
+     if (!data) return;
+
+    const wrap = document.querySelector("#reserveRoom-wrapper");
+    if (!wrap) return;
+
+    wrap.querySelector("#reserve-image").src = data.image;
+    wrap.querySelector(".selected-room-type").textContent = data.type;
+    wrap.querySelector(".reservation-date span").textContent = data.date;
+    wrap.querySelector(".price-before-discounts span").textContent = data.price;
+    wrap.querySelector(".special-discounts span").textContent = data.discount;
+    wrap.querySelector(".night-count").textContent = data.nights;
+    wrap.querySelector("#dateRange").value = data.dateValue;
+    wrap.querySelector(".room-count").textContent = data.roomOption;
+    
+}
+
+function datePicker(){
+        flatpickr("#dateRange", {
+        mode: "range",
+        dateFormat: "Y-m-d",
+        onChange: function(selectedDates, dateStr, instance) {
+
+        if (selectedDates.length === 2) {
+
+            const startDate = instance.formatDate(selectedDates[0], "Y-m-d");
+            const endDate   = instance.formatDate(selectedDates[1], "Y-m-d");
+
+            // Calculate nights
+            const diffTime = selectedDates[1] - selectedDates[0];
+            const nights = diffTime / (1000 * 60 * 60 * 24);
+            document.querySelector(".night-count").textContent = nights;
+            const dateText = document.querySelector("#dateRange").value;
+           
+            // ✅ Save to localStorage
+            const roomData = JSON.parse(localStorage.getItem("selectedRoom")) || {};
+            roomData.dateStart = startDate;
+            roomData.dateEnd = endDate;
+            roomData.nights = nights;
+            roomData.dateValue = dateText;
+            
+            localStorage.setItem("selectedRoom", JSON.stringify(roomData));
+            
+            
+        }
+    }
+    });
+}
+
+function roomPicker(){
+    const roomOptions = document.querySelector("#room");
+    if(!roomOptions) return;
+    const roomCountDisplay = document.querySelector(".room-count");
+    const saved = JSON.parse(localStorage.getItem("selectedRoom")) || {};
+    if (roomCountDisplay) {
+        roomCountDisplay.textContent = saved?.roomOption || "0";
+    }
+    roomOptions.addEventListener("change", async () =>{
+        const roomCount = roomOptions.value;
+        saved.roomOption = roomCount;
+        localStorage.setItem("selectedRoom", JSON.stringify(saved));
+        roomCountDisplay.textContent = saved.roomOption;
     });
 }
 
@@ -176,7 +242,7 @@ function cancelReservation(){
     document.addEventListener("click", async (e) => {
         if (e.target.matches(".cancel-reservation-button")) {
             localStorage.removeItem("selectedRoom");
-
+            localStorage.removeItem("selectedRoomImage");
             //Clear html first before fetching rooms again
             const roomContainer = document.querySelector(".rooms-container");
             roomContainer.innerHTML = "";
@@ -189,3 +255,24 @@ function cancelReservation(){
         }
     });
 }
+
+
+
+async function initAsync() {
+    const roomContainer = document.querySelector(".rooms-container");
+    const savedRoom = localStorage.getItem("selectedRoom");
+
+    if (savedRoom) {
+        roomContainer.innerHTML = await loadHTML("reserve-rooms-html/reserveRoom.html");
+        populateReservation(JSON.parse(savedRoom));
+        datePicker();
+        roomPicker();
+     } else {
+        await fetchRooms();
+        displayMoreDetails();
+        reserveRoom();
+    }
+    scrollHash();
+    cancelReservation();
+}
+document.addEventListener("DOMContentLoaded", initAsync);
