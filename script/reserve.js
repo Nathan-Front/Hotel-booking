@@ -185,7 +185,6 @@ function populateReservation(data){
     wrap.querySelector(".price-before-discounts span").textContent = data.price;
     wrap.querySelector(".special-discounts span").textContent = data.discount;
     wrap.querySelector(".night-count").textContent = data.nights;
-    wrap.querySelector("#dateRange").value = data.dateValue;
     wrap.querySelector(".room-count").textContent = data.roomOption;
     
 }
@@ -201,18 +200,16 @@ function datePicker(){
             const startDate = instance.formatDate(selectedDates[0], "Y-m-d");
             const endDate   = instance.formatDate(selectedDates[1], "Y-m-d");
 
-            // Calculate nights
             const diffTime = selectedDates[1] - selectedDates[0];
             const nights = diffTime / (1000 * 60 * 60 * 24);
             document.querySelector(".night-count").textContent = nights;
-            const dateText = document.querySelector("#dateRange").value;
+           // const dateText = document.querySelector("#dateRange").value;
            
-            // ✅ Save to localStorage
             const roomData = JSON.parse(localStorage.getItem("selectedRoom")) || {};
             roomData.dateStart = startDate;
             roomData.dateEnd = endDate;
             roomData.nights = nights;
-            roomData.dateValue = dateText;
+           // roomData.dateValue = dateText;
             
             localStorage.setItem("selectedRoom", JSON.stringify(roomData));
             

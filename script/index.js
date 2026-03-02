@@ -27,7 +27,7 @@ async function fetchNavbar(){
 async function fetchIndexContent() {
   const main = document.querySelector(".index-main-wrapper");
   if (!main) return;
-  const resFirst = await fetch("../index-html/firstSection.html");
+  const resFirst = await fetch("./index-html/firstSection.html");
   const firstSectionHTML = await resFirst.text();
   main.insertAdjacentHTML("afterbegin", firstSectionHTML);
 

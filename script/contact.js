@@ -2,15 +2,15 @@
 async function fetchContactInfo(){
     const main = document.querySelector(".contact-main-wrapper");
 
-    const resForm = await fetch("../index-html/fifthSection.html");
+    const resForm = await fetch("./index-html/fifthSection.html");
     const formHTML = await resForm.text();
     main.insertAdjacentHTML("beforeend", formHTML);
 
-    const resReview = await fetch("../contact-html/customerReview.html");
+    const resReview = await fetch("./contact-html/customerReview.html");
     const reviewHTML = await resReview.text();
     main.insertAdjacentHTML("beforeend", reviewHTML);
 
-    const resReserve = await fetch("../reservation-button-html/reservationBtn.html");
+    const resReserve = await fetch("./reservation-button-html/reservationBtn.html");
     const reserveHTML = await resReserve.text();
     main.insertAdjacentHTML("beforeend", reserveHTML);
 }
