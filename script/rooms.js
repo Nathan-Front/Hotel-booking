@@ -23,6 +23,7 @@ async function initAsync() {
   reservationInputDisplay();
   accordionFAQ();
   getReservationCount();
+ checkRooms();
 }
 document.addEventListener("DOMContentLoaded", initAsync);
 
@@ -107,3 +108,82 @@ function getReservationCount(){
   });
 }
 
+function checkRoomAvailable(){
+  const rooms = document.getElementById("rooms-form");
+  if(!rooms) return;
+  rooms.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const checkInDate = document.getElementById("checkin").value;
+    const checkOutDate = document.getElementById("checkout").value;
+    const checkIn = new Date(checkInDate);
+    const checkOut = new Date(checkOutDate);
+    const today = new Date();
+    if (checkIn < today || checkOut < today) {
+      alert("Please select a valid date. The date cannot be in the past.");
+      return;
+    }
+
+    if (checkIn >= checkOut) {
+      alert("Check-out date must be after check-in date.");
+      return;
+    }
+    alert("Rooms are available on the selected dates you selected! Please proceed to the next step to complete your reservation.");
+  });
+}
+
+function checkAvailability(checkIn, checkOut) {
+  // Example: already booked date ranges
+  const bookedDates = [
+    { start: "2026-03-10", end: "2026-03-15" },
+    { start: "2026-03-20", end: "2026-03-25" }
+  ];
+
+  const requestedStart = new Date(checkIn);
+  const requestedEnd = new Date(checkOut);
+
+  for (let booking of bookedDates) {
+    const bookedStart = new Date(booking.start);
+    const bookedEnd = new Date(booking.end);
+
+    // Check if dates overlap
+    if (
+      requestedStart < bookedEnd &&
+      requestedEnd > bookedStart
+    ) {
+      return false; // Not available
+    }
+  }
+
+  return true; // Available
+}
+
+function checkRooms(){
+  document
+  .getElementById("rooms-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const checkIn = document.getElementById("checkin").value;
+    const checkOut = document.getElementById("checkout").value;
+   // const result = document.getElementById("availability-result");
+
+    if (!checkIn || !checkOut) {
+      alert("Please select both dates.");
+      return;
+    }
+
+    if (new Date(checkIn) >= new Date(checkOut)) {
+      alert("Check-out must be after check-in.");
+
+      return;
+    }
+
+    const available = checkAvailability(checkIn, checkOut);
+
+    if (available) {
+      alert("Rooms are available!");
+    } else {
+      alert("We are so sorry, no room is available for the selected dates.");
+    }
+  });
+}

@@ -28,6 +28,9 @@ h4{
     font-size: clamp(1rem, 1.4vw, 1.6rem);
     margin: 0;
 }
+.rooms-container{
+    background-color:  #f3f4f6; 
+}
 .reserve-section{
     width: 90%;
     margin: 0 auto 30px auto;
@@ -35,7 +38,10 @@ h4{
     flex-direction: column;
     border-radius: 0.25em;
     background-color: white;
+
+    border: 1px rgb(150, 150, 150) solid;
 }
+
 @media only screen and (max-width: 540px){
     .reserve-section{
         width: 98%;
@@ -142,9 +148,6 @@ h4{
         padding: 0;
     }
 }
-.more-button{
-    padding: 3px 10px;
-}
 .room-right-panel{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
@@ -156,6 +159,9 @@ h4{
     margin: 0 10px 0 0;
     border-radius: 0.25em;
     padding: 0;
+}
+.first-room-right-panel> h4{
+    margin: 0;
 }
 @media only screen and (max-width: 540px){
     .room-right-panel{
@@ -342,7 +348,6 @@ h4{
     background-color: transparent;
     border: none;
     position: relative;
-    border-top: 1px rgb(196, 194, 194) solid;
 }
 .triangle {
   display: inline-block;
@@ -364,7 +369,7 @@ h4{
 }
 .more-rooms:hover{
     color: blue;
-    background-color: aliceblue;
+    background-color:  #f6f2eb;
 }
 .second-room-right-panel,
 .third-room-right-panel,

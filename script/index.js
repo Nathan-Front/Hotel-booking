@@ -68,9 +68,10 @@ document.addEventListener("DOMContentLoaded", initAsync);
 function animateFirstSectionImage(){
   //Animate first section images
   let firstSectionImages = document.querySelectorAll(".room-image");
+  if (firstSectionImages.length === 0) return;
   let currentImageIndex = 0;
   firstSectionImages[currentImageIndex].classList.add("active");
-  if (firstSectionImages.length === 0) return;
+  
   function firstSectionImagesAnimation() {
     const current = firstSectionImages[currentImageIndex];
     current.classList.remove("active");
@@ -89,12 +90,14 @@ function animateFirstSectionImage(){
 
 function goToReservationHtml(){
   const reservationBtn = document.querySelector(".book-button");
+  if(!reservationBtn) return;
   reservationBtn.addEventListener("click", () => {
     window.location.href = "reserve.html";
   });
 }
 function goToAboutHtml(){
   const aboutBtn = document.querySelector(".to-about-us-button");
+  if(!aboutBtn) return;
   aboutBtn.addEventListener("click", () => {
     window.location.href = "about.html";
   });
@@ -102,6 +105,7 @@ function goToAboutHtml(){
 
 function submitForm(){
   const form = document.querySelector("#message-form");
+  if(!form) return;
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = form.querySelector("input[name='Iname']").value;
@@ -291,6 +295,21 @@ function updateGallerySlides(){
   });
 }
 
+function subscribeToNewsletter(){
+    const subscribeBtn = document.querySelector(".subscribe-button");
+    if (!subscribeBtn) return;
+    subscribeBtn.addEventListener("click", () => {
+        const emailInput = document.querySelector(".subscribe-input");
+        const email = emailInput.value.trim();
+        if(email){
+            alert("Thank you for subscribing!");
+            localStorage.setItem("subscribedEmail", email);
+            emailInput.value = "";
+        } else {
+            alert("Please enter a valid email address.");
+        }
+    });
+}
 
 
 

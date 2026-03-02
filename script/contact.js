@@ -1,28 +1,4 @@
-async function fetchNavbar(){
-  const body = document.body;
 
-  //Navigation
-  const res = await fetch("navigation.html");
-  const navHTML = await res.text();
-  body.insertAdjacentHTML("afterbegin", navHTML);
-
-  //footer
-  const footerRes = await fetch("footer.html");
-  const footerHTML = await footerRes.text();
-  body.insertAdjacentHTML("beforeend", footerHTML);
-
-  //alright
-  const alrightRes = await fetch("alright.html");
-  const alrightHTML = await alrightRes.text();
-  body.insertAdjacentHTML("beforeend", alrightHTML);
-
-  //If mobileviewport
-  if (window.innerWidth <= 540) {
-   const resMobile = await fetch("mobileNavigation.html");
-   const mobileNavHTML = await resMobile.text();
-   document.body.insertAdjacentHTML("beforeend", mobileNavHTML);
-  }
-}
 async function fetchContactInfo(){
     const main = document.querySelector(".contact-main-wrapper");
 
@@ -39,7 +15,6 @@ async function fetchContactInfo(){
     main.insertAdjacentHTML("beforeend", reserveHTML);
 }
 async function initAsync() {
-    await fetchNavbar();
     await fetchContactInfo();
     initializeReviewCarousel();
     prevNextReview();

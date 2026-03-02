@@ -86,9 +86,23 @@ function displayMoreDetails(){
  }
 }
 async function initAsync() {
-  await fetchRooms();
+ const savedRoom = localStorage.getItem("selectedRoom");
+  if (savedRoom) {
+    const roomContainer = document.querySelector(".rooms-container");
+    const resReserve = await fetch("reserve-rooms-html/reserveRoom.html");
+    const reserveHTML = await resReserve.text();
+    roomContainer.innerHTML = reserveHTML;
+    flatpickr("#dateRange", {
+      mode: "range",
+      dateFormat: "Y-m-d"
+    });
+  } else {
+    await fetchRooms();
+    displayMoreDetails();
+    reserveRoom();
+  }
   scrollHash();
-  displayMoreDetails();
+  cancelReservation();
 }
 document.addEventListener("DOMContentLoaded", initAsync);
 
@@ -135,3 +149,43 @@ function scrollHash(){
   }
 }
 window.addEventListener("load", scrollHash);
+
+//This needs to be global to be able to access it
+function reserveRoom(){
+    const reserveBtn = document.querySelectorAll(".reserve-room-button");
+    reserveBtn.forEach(btn =>{
+        btn.addEventListener("click", async ()=>{
+            const wrapper = btn.closest(".reserve-section");
+            const roomType = wrapper.querySelector("h3").textContent;
+           
+            localStorage.setItem("selectedRoom", roomType);
+            const roomContainer = document.querySelector(".rooms-container");
+
+            const resReserve = await fetch("reserve-rooms-html/reserveRoom.html");
+            const reserveHTML = await resReserve.text();
+            roomContainer.innerHTML = reserveHTML;
+            flatpickr("#dateRange", {
+                mode: "range",
+                dateFormat: "Y-m-d"
+            });
+        });
+    });
+}
+
+function cancelReservation(){
+    document.addEventListener("click", async (e) => {
+        if (e.target.matches(".cancel-reservation-button")) {
+            localStorage.removeItem("selectedRoom");
+
+            //Clear html first before fetching rooms again
+            const roomContainer = document.querySelector(".rooms-container");
+            roomContainer.innerHTML = "";
+
+            //Reload rooms without reloading page
+            await fetchRooms();
+            //Reattach listeners
+            displayMoreDetails();
+            reserveRoom();
+        }
+    });
+}

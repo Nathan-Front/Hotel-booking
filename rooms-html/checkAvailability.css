@@ -71,11 +71,15 @@ p, button{
 .user-reserve-info-wrapper:hover{
     cursor: pointer;
 }
-.check-available-button{
-    background-color: white;
+.check-button{
     padding: 21px 25px;
-    border: none;
+    background-color: white;
     border-radius: 0.25em;
+}
+.check-available-button{
+   background-color: transparent;
+   border: none;
+    
 }
 .reserve-info-wrapper{
     display: none;
@@ -115,8 +119,8 @@ p, button{
         width: 70vw;
         padding: 15px 20px;
     }
-    .check-available-button{
-        width: 82vw;
+    .check-button{
+        width: 70vw;
         padding: 15px 20px;
     }
     .check-in-out-wrapper> div{
@@ -125,22 +129,25 @@ p, button{
         text-align: center;
     }
     .reserve-info-wrapper-active{
-        right: -10%;
+        right: -5%;
+         padding: 10px 20px;
     }
 }
-@media (min-width: 331px) and (max-width: 540px){
+@media (min-width: 331px) and (max-width: 599px){
+    .user-reserve-info-wrapper::after{
+        content: "";
+    }
     .rooms-form-wrapper{
         width: 70vw;
         margin: 100px auto 0 auto;
     }
     .check-in-out-wrapper,
-    .user-reserve-info-wrapper{
+    .user-reserve-info-wrapper,
+    .check-button{
         width: 60vw;
         padding: 15px 20px;
-    }
-    .check-available-button{
-        width: 70vw;
-        padding: 15px 20px;
+         display: flex;
+        justify-content: center;
     }
     .check-in-out-wrapper> div{
         display: flex;
@@ -148,7 +155,8 @@ p, button{
         text-align: center;
     }
     .reserve-info-wrapper-active{
-        right: -10%;
+        right: 0;
+        padding: 15px 30px;
     }
 }
 .labels{
