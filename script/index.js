@@ -52,7 +52,7 @@ async function fetchIndexContent() {
 function animateFirstSectionImage(){
   //Animate first section images
   let firstSectionImages = document.querySelectorAll(".room-image");
-  if (firstSectionImages.length === 0) return;
+  if (firstSectionImages.length === 0) return null;
   let currentImageIndex = 0;
   firstSectionImages[currentImageIndex].classList.add("active");
   
@@ -84,21 +84,6 @@ function goToAboutHtml(){
   if(!aboutBtn) return;
   aboutBtn.addEventListener("click", () => {
     window.location.href = "about.html";
-  });
-}
-
-function submitForm(){
-  const form = document.querySelector("#message-form");
-  if(!form) return;
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = form.querySelector("input[name='Iname']").value;
-    const email = form.querySelector("input[name='Iemail']").value;
-    const tel = form.querySelector("input[name='Itel']").value;
-    const message = form.querySelector("textarea[name='message']").value;
-    alert("Form submitted successfully!");
-    localStorage.setItem("messageForm", JSON.stringify({ name, email, tel, message }));
-    form.reset();
   });
 }
 
@@ -181,7 +166,7 @@ function getGalleryWrapperWidth(){
   if (galleryImages.length === 0) return;
   const gallerMainWrapper = document.querySelector(".gallery-main-wrapper");
   const viewportWidth = Array.from(galleryImages);
-  if(!galleryWrapper || !galleryImages || !viewportWidth) return null;
+  if(!galleryWrapper || !galleryImages.length === 0 || !viewportWidth) return null;
   const gallerySlide = galleryImages[0];
   const slideRect = gallerySlide.getBoundingClientRect();
   const style = getComputedStyle(gallerySlide);
@@ -273,21 +258,45 @@ function updateGallerySlides(){
       currentIndex = (currentIndex + 1) % gallerySlide.length;
     }
     updateGallery();
-    updateGallerySlides();
+    //updateGallerySlides();
     isDragging = false;
     updateGalleryDots();
+  });
+}
+
+function submitForm(){
+  const form = document.querySelector("#message-form");
+  if(!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.querySelector("input[name='Iname']").value;
+    const email = form.querySelector("input[name='Iemail']").value;
+    const tel = form.querySelector("input[name='Itel']").value;
+    const message = form.querySelector("textarea[name='message']").value;
+    alert("Message sent successfully! Thank you for your message.");
+    localStorage.setItem("messageForm", JSON.stringify({ name, email, tel, message }));
+    form.reset();
   });
 }
 
 function subscribeToNewsletter(){
     const subscribeBtn = document.querySelector(".subscribe-button");
     if (!subscribeBtn) return;
-    subscribeBtn.addEventListener("click", () => {
+    subscribeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
         const emailInput = document.querySelector(".subscribe-input");
-        const email = emailInput.value.trim();
+        const email = emailInput.value.trim().toLowerCase();
+        const uEmail = JSON.parse(localStorage.getItem("subscribedEmail")) || [];
+        const alreadyExist = uEmail.some(subscribe => subscribe.subscriber?.toLowerCase() === email);
+        if(alreadyExist){
+          alert("Currently subscribed with this email.");
+          emailInput.value = "";
+          return;
+        }
         if(email){
             alert("Thank you for subscribing!");
-            localStorage.setItem("subscribedEmail", email);
+            uEmail.push({subscriber: email});
+            localStorage.setItem("subscribedEmail", JSON.stringify(uEmail));
             emailInput.value = "";
         } else {
             alert("Please enter a valid email address.");
