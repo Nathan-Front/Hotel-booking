@@ -166,6 +166,8 @@ label{
 .selected-room-wrapper> img{
     width: clamp(150px, 15vw, 300px);
     height: clamp(120px, 10vw, 260px);
+    border-radius: 0.25em;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.4);
 }
 .selected-room-type{
    margin: 0 0 0 20px;

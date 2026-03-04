@@ -27,9 +27,7 @@
     padding-bottom: 20px;
     border-radius: 0.25em;
 }
-.most-booked-panels:hover{
-    cursor: pointer;
-}
+
 .most-booked-images{
     width: 100%;
     height: 200px;
