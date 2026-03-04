@@ -137,6 +137,8 @@ async function displayReserveRoomPage(roomData){
     populateReservation(roomData);
     datePicker();
     roomPicker();
+    finalStep();
+    computePrice();
 }
 
 function reserveRoom(){
@@ -181,41 +183,42 @@ function populateReservation(data){
 
     wrap.querySelector("#reserve-image").src = data.image;
     wrap.querySelector(".selected-room-type").textContent = data.type;
-    wrap.querySelector(".reservation-date span").textContent = data.date;
-    wrap.querySelector(".price-before-discounts span").textContent = data.price;
-    wrap.querySelector(".special-discounts span").textContent = data.discount;
+    wrap.querySelector(".reservation-date").textContent = data.date;
+    wrap.querySelector(".price-before-discounts").textContent = data.price;
+    wrap.querySelector(".special-discounts").textContent = data.discount;
     wrap.querySelector(".night-count").textContent = data.nights;
     wrap.querySelector(".room-count").textContent = data.roomOption;
-    
+    computePrice();
 }
 
 function datePicker(){
-        flatpickr("#dateRange", {
+    flatpickr("#dateRange", {
         mode: "range",
         dateFormat: "Y-m-d",
         onChange: function(selectedDates, dateStr, instance) {
 
-        if (selectedDates.length === 2) {
+            if (selectedDates.length === 2) {
 
-            const startDate = instance.formatDate(selectedDates[0], "Y-m-d");
-            const endDate   = instance.formatDate(selectedDates[1], "Y-m-d");
+                const startDate = instance.formatDate(selectedDates[0], "Y-m-d");
+                const endDate   = instance.formatDate(selectedDates[1], "Y-m-d");
 
-            const diffTime = selectedDates[1] - selectedDates[0];
-            const nights = diffTime / (1000 * 60 * 60 * 24);
-            document.querySelector(".night-count").textContent = nights;
-           // const dateText = document.querySelector("#dateRange").value;
-           
-            const roomData = JSON.parse(localStorage.getItem("selectedRoom")) || {};
-            roomData.dateStart = startDate;
-            roomData.dateEnd = endDate;
-            roomData.nights = nights;
-           // roomData.dateValue = dateText;
-            
-            localStorage.setItem("selectedRoom", JSON.stringify(roomData));
-            
-            
+                const diffTime = selectedDates[1] - selectedDates[0];
+                const nights = diffTime / (1000 * 60 * 60 * 24);
+
+                const roomData = JSON.parse(localStorage.getItem("selectedRoom")) || {};
+                const reservedRoom = {
+                    ...roomData,
+                    dateStart: startDate,
+                    dateEnd: endDate,
+                    nights: nights
+                };
+                
+                localStorage.setItem("selectedRoom", JSON.stringify(reservedRoom)); 
+                document.querySelector(".night-count").textContent = reservedRoom.nights;
+                computePrice(); 
+
+            }
         }
-    }
     });
 }
 
@@ -223,16 +226,88 @@ function roomPicker(){
     const roomOptions = document.querySelector("#room");
     if(!roomOptions) return;
     const roomCountDisplay = document.querySelector(".room-count");
-    const saved = JSON.parse(localStorage.getItem("selectedRoom")) || {};
-    if (roomCountDisplay) {
-        roomCountDisplay.textContent = saved?.roomOption || "0";
-    }
+    const initial = JSON.parse(localStorage.getItem("selectedRoom")) || {};
+    roomCountDisplay.textContent = initial.roomOption || "0";
     roomOptions.addEventListener("change", async () =>{
-        const roomCount = roomOptions.value;
-        saved.roomOption = roomCount;
-        localStorage.setItem("selectedRoom", JSON.stringify(saved));
-        roomCountDisplay.textContent = saved.roomOption;
+        const current = JSON.parse(localStorage.getItem("selectedRoom")) || {};
+            const updatedReservedRoom = {
+            ...current,      
+            roomOption: roomOptions.value
+        };
+        localStorage.setItem("selectedRoom", JSON.stringify(updatedReservedRoom));
+        roomCountDisplay.textContent = updatedReservedRoom.roomOption;
+        computePrice(); 
     });
+   
+}
+
+function computePrice(){
+    const selectedRoom = JSON.parse(localStorage.getItem("selectedRoom")) || {};
+    const vat = document.querySelector(".vat");
+    const service = document.querySelector(".service-price");
+    let totalPayment = document.querySelector(".total-payment");
+    let savedPrice = document.querySelector(".total-saved");
+
+    let roomNightsPrice = (Number(selectedRoom.price.replace(/\D/g, "")) * Number(selectedRoom.roomOption.replace(/\D/g, "")))  * selectedRoom.nights;
+    let taxedPrice = roomNightsPrice * (Number(vat.textContent.replace(/\D/g, "")) / 100);
+    let servicePrice = roomNightsPrice * (Number(service.textContent.replace(/\D/g, "")) / 100);
+    let discountPrice = roomNightsPrice / Number(selectedRoom.discount.replace(/\D/g, ""));
+    let priceTotal =  (taxedPrice + servicePrice + roomNightsPrice) - discountPrice;
+    totalPayment.textContent = priceTotal;
+    savedPrice.textContent = discountPrice;
+    console.log(roomNightsPrice);
+    console.log(taxedPrice);
+    console.log(servicePrice);
+}
+
+function finalStep(){
+    const finalStepForm = document.querySelector("#final-step-form");
+    if(!finalStepForm) return;
+    finalStepForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        const firstName = document.querySelector("#firstName");
+        const familytName = document.querySelector("#lastName");
+        const reserveEmail = document.querySelector("#email");
+        const reservePhone = document.querySelector("#phone");
+        const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked');
+        const selectedRoom = document.querySelector(".selected-room-type");
+        const dateOfReservation = document.querySelector(".reservation-date");
+        const reserveDateRange = document.querySelector("#dateRange");
+        const roomCount = document.querySelector(".room-count");
+        const nightCount = document.querySelector(".night-count");
+        const originalPrice = document.querySelector(".price-before-discounts");
+        const discount = document.querySelector(".special-discounts");
+        const vat = document.querySelector(".vat");
+        const service = document.querySelector(".service-price");
+        const totalPayment = document.querySelector(".total-payment");
+
+        const discountPrice = Number(originalPrice.textContent.replace(/\D/g, "")) / Number(discount.textContent.replace(/\D/g, ""));
+        const taxedPrice = Number(originalPrice.textContent.replace(/\D/g, "")) / Number(vat.textContent.replace(/\D/g, ""));
+        const servicePrice = Number(originalPrice.textContent.replace(/\D/g, "")) / Number(service.textContent.replace(/\D/g, ""));
+
+        const saved = document.querySelector(".total-saved");
+        alert(`
+            Reservation Summary:
+            First Name: ${firstName.value}
+            Family Name: ${familytName.value}
+            Email: ${reserveEmail.value}
+            Phone: ${reservePhone.value}
+            Payment: ${selectedPayment.value}
+            Room: ${selectedRoom.textContent}
+            Reservation Date: ${dateOfReservation.textContent}
+            Date Range: ${reserveDateRange.value}
+            Room Count: ${roomCount.textContent}
+            Night Count: ${nightCount.textContent}
+            Original Price: ${originalPrice.textContent}
+            Discount: ${discount.textContent}
+            VAT: ${vat.textContent}
+            Service Fee: ${service.textContent}
+            Total Payment: ${totalPayment.textContent}
+            Saved: ${saved.textContent}
+        `);
+        finalStepForm.reset();
+    });
+        
 }
 
 function cancelReservation(){
@@ -264,6 +339,9 @@ async function initAsync() {
         populateReservation(JSON.parse(savedRoom));
         datePicker();
         roomPicker();
+        finalStep();
+        computePrice();
+       
      } else {
         await fetchRooms();
         displayMoreDetails();
@@ -271,5 +349,7 @@ async function initAsync() {
     }
     scrollHash();
     cancelReservation();
+    
+   
 }
 document.addEventListener("DOMContentLoaded", initAsync);
