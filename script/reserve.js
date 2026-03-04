@@ -153,22 +153,31 @@ function reserveRoom(){
         const percentOff = btn.closest(".price-main-wrapper")?.querySelector(".percent-off")?.textContent || "0%";
 
         localStorage.setItem("selectedRoom", JSON.stringify({
-            type: roomType,
-            image: roomImage,
-            date: today,
-            price: originalPrice,
-            discount: percentOff
+             type: roomType,
+    image: roomImage,
+    date: today,
+    price: originalPrice,
+    discount: percentOff,
+    nights: 1,
+    roomOption: 1,
+    dateStart: today,
+    dateEnd: today
         }));
         await displayReserveRoomPage({
-            type: roomType,
-            image: roomImage,
-            date: today,
-            price: originalPrice,
-            discount: percentOff
+             type: roomType,
+    image: roomImage,
+    date: today,
+    price: originalPrice,
+    discount: percentOff,
+    nights: 1,
+    roomOption: 1,
+    dateStart: today,
+    dateEnd: today
         });
 
     });
 });
+
 }
 
 async function loadHTML(path) {
@@ -248,11 +257,20 @@ function computePrice(){
     let totalPayment = document.querySelector(".total-payment");
     let savedPrice = document.querySelector(".total-saved");
 
-    let roomNightsPrice = (Number(selectedRoom.price.replace(/\D/g, "")) * Number(selectedRoom.roomOption.replace(/\D/g, "")))  * selectedRoom.nights;
-    let taxedPrice = roomNightsPrice * (Number(vat.textContent.replace(/\D/g, "")) / 100);
-    let servicePrice = roomNightsPrice * (Number(service.textContent.replace(/\D/g, "")) / 100);
-    let discountPrice = roomNightsPrice / Number(selectedRoom.discount.replace(/\D/g, ""));
-    let priceTotal =  (taxedPrice + servicePrice + roomNightsPrice) - discountPrice;
+    const basePrice = Number(String(selectedRoom.price || 0).replace(/\D/g, ""));
+    const roomCount = Number(selectedRoom.roomOption || 1);
+    const nights = Number(selectedRoom.nights || 1);
+    const discountPercent = Number(String(selectedRoom.discount || 0).replace(/\D/g, ""));
+    const vatPercent = Number(vat.textContent.replace(/\D/g, ""));
+    const servicePercent = Number(service.textContent.replace(/\D/g, ""));
+
+    const roomNightsPrice = basePrice * roomCount * nights;
+
+    const taxedPrice = roomNightsPrice * (vatPercent / 100);
+    const servicePrice = roomNightsPrice * (servicePercent / 100);
+    const discountPrice = roomNightsPrice * (discountPercent / 100);
+
+    const priceTotal = roomNightsPrice + taxedPrice + servicePrice - discountPrice;
     totalPayment.textContent = priceTotal;
     savedPrice.textContent = discountPrice;
     console.log(roomNightsPrice);
