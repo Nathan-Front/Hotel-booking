@@ -4,6 +4,10 @@
     flex-direction: column;
     padding: 30px 0;
 }
+.rooms-fourth-section> h2{
+    width: 90%;
+    margin: 0 auto;
+}
 .rooms-fourth-section> div{
     display: flex;
     justify-content: center;
@@ -58,11 +62,23 @@
         width: clamp(300px, 45vw, 800px);
     }
 }
-@media only screen and (max-width: 540px){
+@media (min-width: 331px) and (max-width: 599px){
     .rooms-fourth-section> div{
         gap: 0.25em;
     }
     .faq-question::after{
         display: none;
+    }
+}
+@media (min-width: 600px) and (max-width: 768px){
+    .rooms-fourth-section> div{
+        gap: 0.25em;
+    }
+    .faq-question::after{
+        display: none;
+    }
+    .faq-panels{
+        width: 80%;
+        margin: 0 auto;
     }
 }

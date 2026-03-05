@@ -112,9 +112,11 @@ ul> li{
 }
 @media only screen and (max-width: 550px){
     .more-details-wrapper{
+        width: 95%;
         display: flex;
         flex-direction: column;
-        overflow: hidden;   
+        overflow: hidden;  
+        top: 2%;
     }
      .more-details-container{
         flex: 1;               
