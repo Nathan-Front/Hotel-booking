@@ -94,7 +94,6 @@ label{
     width: 100%;
     display: flex;
     justify-content: flex-start;
-
 }
 .expiry-cvv> input{
     width: clamp(100px, 15vw, 250px);
@@ -111,6 +110,7 @@ label{
     display: flex;
     align-items: center;
     gap: 3px;
+    padding-bottom: 10px;
 }
 .other-payment> img{
     width: clamp(40px, 2vw, 80px);
@@ -132,7 +132,7 @@ label{
 .cancel-reservation-button{
     background-color: #6c757d;
     padding: 3px 10px;
-    width: clamp(150px, 15vw, 300px);
+    width: clamp(200px, 15vw, 300px);
 }
 .cancel-reservation-button:hover{
     background-color: #8c1f29;
@@ -142,7 +142,7 @@ label{
 .final-step-button{
     background-color: #0d6efd;
     padding: 3px 10px;
-    width: clamp(150px, 20vw, 400px);
+    width: clamp(200px, 20vw, 400px);
 }
 .final-step-button:hover{
     background-color: #174fc4;  
@@ -211,4 +211,33 @@ label{
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+@media only screen and (max-width: 599px){
+    .reserveRoom-html{
+        flex-direction: column;
+    }
+    .input-label-wrap,
+    .select-payment,
+    .card-info,
+    .other-payment,
+     .submit-button,
+     .room-selected-summary{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .payment-methods> h3{
+        margin-left: 25px;
+    }
+    .expiry-cvv> input{
+        width:40%;
+    }
+    .submit-button{
+        justify-content: space-evenly;
+    }
+    .selected-room-wrapper,
+    .date-selection-wrapper,
+    .payment-summary-wrap,
+    .cancelation-wrap{
+        width: 100%;
+    }
 }

@@ -212,3 +212,8 @@
         left: 6px;
     }
 }
+@media (min-width: 769px) and (max-width: 960px){
+    .container-wrap{
+    margin-left: -50px;
+    }
+}
